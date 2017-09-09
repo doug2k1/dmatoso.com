@@ -1,5 +1,7 @@
 <nav>
   <ul>
-    <li><a href="">Home</a></li>
+    <% menu.forEach(item => { %>
+      <li><a href="<%= item.path %>"><%= item.name %></a></li>
+    <% }) %>
   </ul>
 </nav>

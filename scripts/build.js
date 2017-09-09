@@ -3,7 +3,7 @@ const fse = require('fs-extra')
 const path = require('path')
 const recursive = require('recursive-readdir')
 const { promisify } = require('util')
-const config = require('../site-config')
+const config = require('../site.config')
 
 const srcPath = './src'
 const distPath = './public'
