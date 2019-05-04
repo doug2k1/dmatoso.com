@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>7. Colis&otilde;es</title>
+</head><body>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="4">&nbsp;7. Colis&otilde;es</font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Detectar a colis&atilde;o
+        entre 2 objetos<br>
+        &nbsp;<b>N&iacute;vel</b>: Intermedi&aacute;rio<br>
+        &nbsp;<b>Arquivos</b>: <a href="collision.bb">collision.bb</a></font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%">
+      <p align="center"><font size="2" face="verdana">
+<img src="9c.jpg" alt="Movement" width="167" height="127" align="right">
+</font>
+
+
+      </p>
+    </td>
+  </tr>
+</table>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> Neste exemplo
+  usarei 2 entidades prontas, uma Esfera e um Cubo. <br>
+  <br>
+  O programa exibir&aacute; uma mensagem uma vez que a esfera entrar em contato
+  com o cubo. Rode o programa primeiro para entender o que est&aacute; acontecendo
+  antes de entrar no c&oacute;digo-fonte abaixo</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">.</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      <font face="arial"> &nbsp; <font face="Arial, Helvetica, sans-serif">Graphics3D
+      800,600<br>
+      <br>
+      &nbsp; Const CUBE_COL=1<br>
+      &nbsp; Const SPHERE_COL=2<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      &nbsp; PositionEntity camera,0,0,-5<br>
+      <br>
+      &nbsp; light=CreatLight()<br>
+      <br>
+      &nbsp; cube=CreateCube()<br>
+      &nbsp; PositionEntity cube,-5,0,5<br>
+      &nbsp; EntityColor cube,70,80,190<br>
+      &nbsp; EntityType cube,CUBE_COL<br>
+      <br>
+      &nbsp; sphere=CreateSphere(12)<br>
+      &nbsp; PositionEntity sphere,5,0,5<br>
+      &nbsp; EntityColor sphere,170,80,90<br>
+      &nbsp; EntityType sphere,SPHERE_COL<br>
+      <br>
+      &nbsp; Collisions SPHERE_COL,CUBE_COL,3,1<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp; MoveEntity sphere,-0.02,0,0<br>
+      <br>
+      &nbsp; UpdateWorld<br>
+      &nbsp; RenderWorld<br>
+      <br>
+      &nbsp; If EntityCollided(sphere,CUBE_COL) Then<br>
+      &nbsp; Text 370,80,"Colidiram !!!"<br>
+      &nbsp; EndIf<br>
+      <br>
+      &nbsp; Text 335,500,"Detec&ccedil;&atilde;o de Colis&atilde;o"<br>
+      &nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      <br>
+      &nbsp; End</font><br>
+      <br>
+      </font></font> </td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> Poder verificar
+  colis&otilde;es &eacute; talvez a parte principal de qualquer jogo. Afinal de
+  contas, sem detec&ccedil;&atilde;o de colis&atilde;o o que vai evitar que o
+  Mario afunde no ch&atilde;o, ou fazer com que as balas da arma de Max Payne
+  causem dano? N&oacute;s precisamos disto - quer voc&ecirc; queira ou n&atilde;o!
+  <br>
+  <br>
+  Se voc&ecirc; olhar cuidadosamente o exemplo voc&ecirc; notar&aacute; v&aacute;rios
+  comandos novos. Vamos analisar todo o programa antes de olharmos cada comando.
+  <br>
+  <br>
+  Primeiramente n&oacute;s criamos 2 objetos - um Cubo e uma Esfera -, ent&atilde;o
+  n&oacute;s ativamos a detec&ccedil;&atilde;o de colis&atilde;o de forma que
+  o B3D vai conferir estes objetos cada vez que a fun&ccedil;&atilde;o UpdateWorld
+  for chamada. <br>
+  <br>
+  Lentamente n&oacute;s movemos a Esfera em dire&ccedil;&atilde;o ao Cubo, at&eacute;
+  que eles colidam. Depois disso, n&oacute;s imprimimos uma mensagem na tela para
+  sinalizar que houve a colis&atilde;o. <br>
+  <br>
+  Ent&atilde;o, o que estas novas instru&ccedil;&otilde;es fazem</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">?</font></p>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>Const CUBE_COL=1<br>
+      Const SPHERE_COL=2</b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Ok, isso n&atilde;o &eacute; uma instru&ccedil;&atilde;o, mas
+  apenas algo que eu acrescentei a este exemplo. Quando estiver programando tente
+  fazer as coisas o mais f&aacute;cil poss&iacute;vel - certamente ajudar&aacute;
+  quando vier a depurar (procurar erros).<br>
+  <br>
+  As instru&ccedil;&otilde;es de Colis&atilde;o que n&oacute;s temos se baseiam
+  em vari&aacute;veis, mas em lugar apenas usar n&uacute;meros eu usarei CONSTANTES.
+  <br>
+  <br>
+  Assim, a partir destas duas linhas, eu posso usar a v&aacute;ri&aacute;vel CUBE_COL
+  toda vez eu quiser usar 1 e SPHERE_COL em vez de 2. Embora, claro, que eu pudesse
+  usar apenas os n&uacute;meros com as instru&ccedil;&otilde;es, mas isso nos
+  ajudar&aacute; como voc&ecirc; vai ver</font><font size="2">.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>EntityType cube,CUBE_COL</b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Depois que n&oacute;s
+  tivermos definido o nosso objeto, n&oacute;s precisamos definir uma vari&aacute;vel
+  de colis&atilde;o para ele. N&oacute;s fazemos isto atribu&iacute;ndo um n&uacute;mero
+  &agrave; entidade. Como voc&ecirc; pode ver, para fazer isto n&oacute;s usamos
+  o comando EntityType. Aqui eu fixei o cubo para ter o valor 1. (se lembre que
+  a constante CUBE_COL tem valor 1)</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2"><b><font face="Arial">EntityType </font>
+      <font face="Arial">sphere,SPHERE_COL</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2">Como antes, n&oacute;s definimos a vari&aacute;vel de colis&atilde;o
+  de esfera para ter o valor 2. <br>
+  <br>
+  <b>UMA NOTA IMPORTANTE!</b> <br>
+  <br>
+  Toda entidade N&Atilde;O tem que ter um valor de colis&atilde;o separado. Por
+  exemplo, n&oacute;s criamos um labirinto 3d que tem 10 objetos para as laterais
+  do labirinto. N&oacute;s ir&iacute;amos querer conferir se colidimos com uma
+  parede, qual parede n&atilde;o importa... s&oacute; uma parede. Assim todo objeto
+  (entidade) parede teria a mesma vari&aacute;vel de colis&atilde;o. <br>
+  Eu usaria o c&oacute;digo: </font></p>
+<p><font size="2"><b>Const WALL=1<br>
+  EntityType wall1,WALL<br>
+  EntityType wall2,WALL</b>... etc<br>
+  <br>
+  Mais tarde quando n&oacute;s precisarmos checar uma colis&atilde;o n&oacute;s
+  apenas dizemos: 'h&aacute; uma colis&atilde;o com a parede?' F&aacute;cil, n&atilde;o</font><font size="2">?</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>Collisions SPHERE_COL,CUBE_COL,3,1</b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Agora a divers&atilde;o
+  come&ccedil;a, esta &eacute; a instru&ccedil;&atilde;o principal que informa
+  o B3D em quais objetos verificar colis&otilde;es e que a&ccedil;&atilde;o tomar.
+  <br>
+  <br>
+  A primeira parte da linha est&aacute; dizendo que n&oacute;s queremos que a
+  verifica&ccedil;&atilde;o aconte&ccedil;a entre os marcadores de colis&atilde;o
+  1 e 2. (Se lembre que a Esfera &eacute; 1 e o Cubo &eacute; 2) <br>
+  <br>
+  Se n&oacute;s tiv&eacute;ssemos mais entidades com o mesmo valor de colis&atilde;o,
+  ent&atilde;o claro que estes tamb&eacute;m seriam inclu&iacute;dos. <br>
+  <br>
+  O primeiro valor (3), representa o tipo de colis&atilde;o que n&oacute;s queremos
+  que o B3D execute, neste caso n&oacute;s estamos usando modo '3' - que &eacute;
+  uma colis&atilde;o de Esfera-para-Caixa. <br>
+  <br>
+  O B3D tem 3 tipos diferentes de colis&otilde;es que n&oacute;s podemos executar,
+  estes s&atilde;o</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">:</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial, Helvetica, sans-serif">1 = Esfera-para-Esfera
+      <br>
+      2 = Esfera-para-Pol&iacute;gono <br>
+      3 = Esfera-para-Caixa </font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Agora vamos ao
+  &uacute;ltimo valor (1). Este &eacute; o valor de resposta. Ele sinaliza o que
+  o B3D deve fazer quando uma colis&atilde;o acontece. Eu usei o valor 1 que &eacute;
+  usado para uma parada. (Quando colidir com algo, o objeto p&aacute;ra) <br>
+  <br>
+  Como antes existem 3 modos que podemos usar</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">:</font></p>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial, Helvetica, sans-serif">1 = Parar
+      <br>
+      2 = Slide1 - Objeto desliza <br>
+      3 = Slide2 - Objeto desliza, levando em conta o &acirc;ngulo dos pol&iacute;gonos
+      </font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Embora em meu programa
+  eu esteja movento a esfera com o comando MoveEntity, quando acontecer a colis&atilde;o
+  a entidade n&atilde;o mover&aacute; atrav&eacute;s do cubo (porque eu usei o
+  modo de PARADA). <br>
+  <br>
+  N&oacute;s temos mais um comando para observar. Essa &eacute; a pr&oacute;pria
+  instru&ccedil;&atilde;o de verifica&ccedil;&atilde;o de colis&atilde;o</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">.</font></p>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%">
+
+<font size="2" face="Arial">If
+
+<b> EntityCollided(sphere,CUBE_COL) </b> then</font><font size="2" face="arial"><br>
+      Text 370,80,"Colidiram !!!"<br>
+EndIf
+      </font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2">Como voc&ecirc; pode provavelmente adivinhar, esta instru&ccedil;&atilde;o
+  (embutida em um IF) est&aacute; conferindo a entidade ESFERA para uma colis&atilde;o
+  com a vari&aacute;vel de colis&atilde;o 1 (o cubo). <br>
+  <br>
+  Se colidiu ent&atilde;o imprima a mensagem para sinalizar uma colis&atilde;o!
+  <br>
+  <br>
+  Ok, n&oacute;s passamos pelo programa inteiro, mas fez sentido para voc&ecirc;?
+  N&atilde;o &eacute; esperado que voc&ecirc; entenda tudo logo de in&iacute;cio.
+  O melhor modo para aprender as v&aacute;rias instru&ccedil;&otilde;es de colis&atilde;o
+  &eacute; experimentar com os deferentes modos. Eventualmente (se voc&ecirc;
+  n&atilde;o entendeu completamente at&eacute; agora) voc&ecirc; vai perceber
+  como podem ser f&aacute;ceis e poderosos</font><font size="2">.</font></p>
+<p align="center"><font color="#808080" size="2">Tutorial 8 - <a href="page8_br.html">V&eacute;rtices</a></font></p>
+</font></body></html>

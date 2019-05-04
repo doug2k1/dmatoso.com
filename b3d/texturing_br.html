@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a Texturas</title>
+</head>
+<body>
+<center>
+  <h1><font size="4" face="Verdana">Introdu&ccedil;&atilde;o a Texturas</font></h1>
+</center>
+<p> <font size="2" face="Verdana">Texturas s&atilde;o imagens especiais que s&atilde;o 
+  desenhadas em cima de pol&iacute;gonos para dar-lhes maior detalhe. <br>
+  <br>
+  Texturas podem ser criadas em tempo real ou carregadas de um arquivo de imagem. 
+  <br>
+  <br>
+  Como imagens de Blitz2D, texturas s&atilde;o compostas de pixels. Estes pixels 
+  podem ser acessados pelas coordenadas x,y como em imagens - s&oacute; que de 
+  um modo ligeiramente diferente. <br>
+  <br>
+  Em vez de valores de x,y que variam de 0 at&eacute; o tamanho da textura, valores 
+  x,y para texturas variam de 0 a 1. Isto significa o pixel de textura no ponto 
+  .5, .5 sempre est&aacute; no centro da textura. Isto &eacute; possivelmente 
+  um pouco confuso no princ&iacute;pio, mas na verdade se mostra muito conveniente 
+  por voc&ecirc; n&atilde;o ter que se preocupar com as dimens&otilde;es das suas 
+  texturas!</font> </p>
+<h2> <font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;'Flags' 
+  de Texturas&nbsp;</span></font> </h2>
+<p> <font size="2" face="Verdana">Quando uma textura &eacute; criada, valores 
+  chamados 'flags' s&atilde;o fornecidos para indicar que tipo de textura ser&aacute; 
+  usado. <br>
+  <br>
+  Estes s&atilde;o os valores v&aacute;lidos:</font> </p>
+<table border="1" width="100%">
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">1:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura tem informa&ccedil;&atilde;o 
+      de cor.</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">2:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura tem informa&ccedil;&atilde;o 
+      de transpar&ecirc;ncia (alfa).</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">4:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura &eacute; uma textura 
+      vazada (mask).</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">8:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura tem efeito 'mipmapping'.</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">16:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura &eacute; horizontalmente 
+      fixa.</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">32:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> A textura &eacute; verticalmente 
+      fixa.</font></td>
+  </tr>
+  <tr> 
+    <td width="5%"><font size="2" face="Verdana">64:</font></td>
+    <td width="95%"><font size="2" face="Verdana"> Textura com efeito 'spherical 
+      environment map'.</font></td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana">Estes valores podem ser somados para combinar 
+  o efeito de diferentes flags. Por exemplo, uma textura com valor 3 indica voc&ecirc; 
+  quer uma textura com unforma&ccedil;&atilde;o de cor e informa&ccedil;&atilde;o 
+  de alfa. <br>
+  <br>
+  Se nem a cor, alfa ou textura vazada forem usadas, ent&atilde;o a textura &eacute; 
+  criada em um formato especial que lhe permite desenhar nela usando comandos 
+  de Blitz2D ou mesmo Blitz3D! Uma textura criada deste modo ter&aacute; informa&ccedil;&atilde;o 
+  de cor, mas pode ou n&atilde;o ter informa&ccedil;&atilde;o de alfa (isto depende 
+  de que placa de v&iacute;deo voc&ecirc; est&aacute; usando!), assim &eacute; 
+  realmente mais seguro assumir que ela n&atilde;o tem nenhuma informa&ccedil;&atilde;o 
+  de alfa. <br>
+  <br>
+  Se a textura vazada for usada, s&atilde;o ignoradas as informa&ccedil;&otilde;es 
+  de cor e alfa. </font></p>
+<p><font size="2" face="Verdana">Nas texturas vazadas, os pixels da cor preta 
+  ficam transparentes.</font></p>
+<p><font size="2" face="Verdana">Com efeito 'mipmapping' as texturas ficam mais 
+  'emba&ccedil;adas' quando est&atilde;o muito distantes.<br>
+  <br>
+  As texturas fixas lhe permitem controlar se a textura 'envolve' o objeto ou 
+  n&atilde;o. Por padr&atilde;o, texturas ir&atilde;o 'envolver' ou 'repetir' 
+  em &aacute;reas grandes. Por&eacute;m, voc&ecirc; pode prevenir isto usando 
+  as texturas fixas. <br>
+  <br>
+  Finalmente, o 'spherical environment map' prov&ecirc; um modo f&aacute;cil para 
+  termos uma apar&ecirc;ncia 'espelhada' no objeto. Experimente!</font> </p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Criando 
+  Texturas&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana">Voc&ecirc; pode criar uma textura e desenhar 
+  sobre ela em tempo real, ou carregar uma textura de um arquivo de imagem. <br>
+  <br>
+  Carregando uma textura de um arquivo &eacute; f&aacute;cil:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp; <font face="Arial"><b>texture=LoadTexture( "mytexture.jpg",3 
+      )&nbsp;&nbsp;</b></font>&nbsp;&nbsp;<font face="Arial"><br>
+      </font><br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana">Note o flag de valor 3. Isto indica que n&oacute;s 
+  queremos que a textura contenha informa&ccedil;&atilde;o de cor e alfa. <br>
+  <br>
+  Por&eacute;m, o formato JPG n&atilde;o suporta informa&ccedil;&atilde;o de alfa! 
+  Neste caso, o Blitz3D criar&aacute; seus pr&oacute;prios valores alfa baseado 
+  nas cores da textura. <br>
+  <br>
+  J&aacute;, os formatos PNG e TGA suportam informa&ccedil;&atilde;o de alfa, 
+  e Blitz3D usar&aacute; esta informa&ccedil;&atilde;o se estiver presente. <br>
+  <br>
+  Para criar uma textura 'na m&atilde;o', use o comando de CreateTexture.</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp; <font face="Arial">;cria uma textura 256x256</font><br>
+      &nbsp;&nbsp;&nbsp; <font face="Arial"><b>texture=CreateTexture( 256,256,0 
+      )</b></font></font> <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;l&ecirc; 
+        sua largura...<br>
+        &nbsp;&nbsp;&nbsp; <b>width=TextureWidth( texture )</b></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;...e altura<br>
+        &nbsp;&nbsp;&nbsp; <b>height=TextureHeight( texture )</b><br>
+        </font><font size="2"><br>
+        </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana">Por que n&oacute;s estamos recobrando o tamanho 
+  de textura quando n&oacute;s j&aacute; informamos para o Blitz3D o tamanho dela? 
+  <br>
+  <br>
+  Bem, isto &eacute; porque todos as placas de v&iacute;deo 3D t&ecirc;m limites 
+  quanto ao tamanho de textura que eles podem controlar. Tipicamente, largura 
+  e altura deveriam ser m&uacute;ltiplos de 2 (ex: 1,2,4,8,16,32,64,128,256,512,1024...) 
+  e em alguns casos - placas 3DFX sendo as maiores culpadas aqui - n&atilde;o 
+  podem ser maiores que 256 x 256. <br>
+  <br>
+  Tamb&eacute;m h&aacute; rumores que algumas placas podem controlar s&oacute; 
+  texturas quadradas - embora aqui na Blitz Research n&oacute;s ainda n&atilde;o 
+  encontramos uma dessas! <br>
+  <br>
+  Um textura onde largura e altura s&atilde;o ambas m&uacute;ltiplos de 2 e &lt;= 
+  256 &eacute; quase garantido ser suportada por sua placa - mas nunca faz mal 
+  conferir! <br>
+  <br>
+  No momento que voc&ecirc; especifica um tamanho de textura n&atilde;o suportado 
+  pela placa de v&iacute;deo, o Blitz3D escolher&aacute; o tamanho mais pr&oacute;ximo 
+  que seja suportado. <br>
+  <br>
+  Note tamb&eacute;m que estamos usando flags valor 0. Isto &eacute; porque, provavelmente, 
+  queremos desenhar algo &agrave; textura, e para poder usar comandos de gr&aacute;ficos 
+  em uma textura voc&ecirc; n&atilde;o deve especificar a cor, alfa ou 'mask' 
+  da textura. <br>
+  <br>
+  OK, agora que criamos nossa textura n&oacute;s dever&iacute;amos desenhar algo 
+  nela:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; <font face="Arial">;define o fluxo de desenho como 
+      sendo a textura<br>
+      &nbsp;&nbsp;&nbsp;<b> SetBuffer TextureBuffer( texture )</b></font></font> 
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;torna vermelha a cor 
+        de fundo<br>
+        &nbsp;&nbsp;&nbsp;<b> ClsColor 255,0,0</b></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;aplica a cor de fundo<br>
+        &nbsp;&nbsp;&nbsp;<b> Cls&nbsp;</b></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;muda a cor de desenho 
+        para azul<br>
+        &nbsp;&nbsp;&nbsp; <b>Color 0,0,255&nbsp;</b></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;desenha um oval azul<br>
+        &nbsp;<b>&nbsp;&nbsp; Oval 0,0,width,height&nbsp;</b></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; ;de volta ao 'backbuffer'&nbsp;&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp; <b>SetBuffer BackBuffer()</b>&nbsp;&nbsp;<br>
+        </font><font size="2"><br>
+        </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2"><br>
+  <font face="Verdana">Finalmente, uma vez que voc&ecirc; terminou com uma textura, 
+  use FreeTexture para liber&aacute;-la.</font></font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Animando 
+  Texturas&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">ScaleTexture, RotateTexture e PositionTexture 
+  podem ser usados para animar texturas. Por exemplo, para fazer uma textura 'deslizar' 
+  , voc&ecirc; poderia usar algo como: </font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><p><font size="2" face="Arial, Helvetica, sans-serif"> 
+        <br>
+        &nbsp;&nbsp;&nbsp; ;adiciona .1 para a posi&ccedil;&atilde;o x da textura. 
+        </font><font size="2">&nbsp;<br>
+        <font face="Arial, Helvetica, sans-serif"><b>&nbsp;&nbsp;&nbsp; texture_x# 
+        = texture_x# + .1 </b></font></font></p>
+      <p><font size="2" face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;&nbsp; 
+        ;posiciona a textura.</font> <font size="2" face="Arial, Helvetica, sans-serif"><br>
+        <b>&nbsp;&nbsp;&nbsp; PositionTexture texture,texture_x#,0<br>
+        <br>
+        </b></font> </p></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana"> ...no seu loop principal. Voc&ecirc; pode escalar 
+  e girar texturas dinamicamente de um modo semelhante.</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Multitexturas&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">O Blitz3D lhe permite aplicar at&eacute; 8 texturas 
+  a um &uacute;nico tri&acirc;ngulo, uma t&eacute;cnica conhecida como 'multitexturas'. 
+  <br>
+  <br>
+  Um uso comum para multitexturas &eacute; 'mapeamento de luz' (light mapping), 
+  uma t&eacute;cnica onde uma textura que cont&eacute;m informa&ccedil;&atilde;o 
+  de ilumina&ccedil;&atilde;o &eacute; combinada com uma textura que cont&eacute;m 
+  informa&ccedil;&atilde;o de cor para prover efeitos de ilumina&ccedil;&atilde;o. 
+  <br>
+  <br>
+  Quando voc&ecirc; usa os comandos EntityTexture ou BrushTexture, um par&ecirc;metro 
+  opcional '&iacute;ndice' lhe permite controlar qual das 8 texturas voc&ecirc; 
+  est&aacute; definindo. <br>
+  <br>
+  Por padr&atilde;o, s&atilde;o combinadas texturas m&uacute;ltiplas usando multiplica&ccedil;&atilde;o 
+  o que gera um efeito tipo ilumina&ccedil;&atilde;o. Por&eacute;m, o comando 
+  TextureBlend lhe permite executar outras opera&ccedil;&otilde;es como alfa-blend 
+  e adicionar texturas m&uacute;ltiplas.</font></p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen 
+    - GamecodingUK</font>
+  </center>
+</p>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>4. Anima&ccedil;&atilde;o de Objetos</title>
+</head><body>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="2">&nbsp;<font size="4">4.
+        Anima&ccedil;&atilde;o de Objetos</font></font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Animar um objeto<br>
+        &nbsp;<b>N&iacute;vel</b>: Intermedi&aacute;rio<br>
+        &nbsp;<b>Arquivos</b>: <a href="animation.bb">animation.bb</a> / <a href="gargoyle.md2">gargoyle.md2</a></font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"> <p align="right"><font size="2" face="verdana"> <img src="6c.jpg" alt="Animation" width="166" height="128"></font></p></td>
+  </tr>
+</table>
+<p><font size="2"> <font face="Verdana, Arial, Helvetica, sans-serif">At&eacute;
+  agora n&oacute;s s&oacute; usamos objetos est&aacute;ticos. &Eacute; hora de
+  dar vida a nosso mundo e pensar em anima&ccedil;&atilde;o. O Blitz3D carregar&aacute;
+  malhas animadas de uma variedade de formatos, inclusive .X (DirectX), .MD2 (usado
+  pela engine do Quake 2) e ultimamente .3DS (3D Studio). <br>
+  <br>
+  Como voc&ecirc; exibe e anima um objeto? Embora o B3D tenha alguns comandos
+  para construir formas como o cubo e esfera, realmente n&oacute;s precisamos
+  usar um modelador 3D para criar nosso objeto. <br>
+  <br>
+  A maioria dos programas v&atilde;o exportar/importar quase todo formato que
+  voc&ecirc; possa precisar, pessoalmente eu gosto de trabalhar com o formato
+  Directx (X). O modelador que voc&ecirc; escolhe usar depende de sua prefer&ecirc;ncia.
+  Truespace (<a href="http://www.caligari.com" target="_blank">www.caligari.com</a>),
+  Rhino 3D (<a href="http://www.rhino3d.com" target="_blank">www.rhino3d.com</a>)
+  e Canvas 3D (<a href="http://www.amegia.com" target="_blank">www.amegia.com</a>) - todos suportam
+  o formato X sem problemas. Outros modeladores podem suportar com o uso de plugins.
+  <br>
+  <br>
+  Recentemente eu tenho usado o modelador AC3D para minhas necessidades, uma vez
+  que ele &eacute; simples e poderoso. Voc&ecirc; pode baixar uma vers&atilde;o
+  trial completamente funcional no website oficial (<a href="http://www.comp.lancs.ac.uk/computing/users/andy/ac3d.html" target="_blank">www.comp.lancs.ac.uk/computing/users/andy/ac3d.html</a>),
+  mas projetar um objeto que realmente tenha movimento real&iacute;stico &eacute;
+  uma arte. A maioria de n&oacute;s (inclusive eu) vai achar isto uma luta. Por
+  sorte lugares como 3dcafe (<a href="http://www.3dcafe.com" target="_blank">www.3dcafe.com</a>)
+  e Polycount (<a href="http://www.ploycount.com">www.ploycount.com</a>) cont&eacute;m
+  centenas de modelos gr&aacute;tis prontos para serem usados. <br>
+  <br>
+  Hora do c&oacute;digo-fonte</font></font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">:
+  </font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp; <font face="arial">Graphics3D 800,600<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp; light=CreateLight()<br>
+      <br>
+      &nbsp; man=LoadMD2( &quot;gargoyle.md2&quot; )<br>
+      &nbsp; PositionEntity man,0,-35,600<br>
+      &nbsp; RotateEntity man,0,180,0<br>
+      <br>
+      &nbsp; AnimateMD2 man,1,.1,32,46<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If dist&lt;970 MoveEntity man,0,0,.5<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If dist=970 AnimateMD2 man,1,.05,0,31<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dist=dist+1<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UpdateWorld<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RenderWorld<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Text 320,500,&quot;Demo: Um MD2 Animado&quot;<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      &nbsp; End</font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Ent&atilde;o, o que est&aacute; acontecendo?</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2"><b><font face="Arial">man=LoadMD2( "gargoyle.md2"
+      )<br>
+      PositionEntity man,0,-35,600<br>
+      RotateEntity man,0,-90,0</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Aqui eu usei o comando LoadMD2 para carregar um objeto MD2
+  animado com a vari&aacute;vel 'man'. Modelos MD2 podem ser achados quase em
+  qualquer lugar na rede, uma vez que eles s&atilde;o o foco principal do Quake
+  2. Existem centenas de objetos prontos e com anima&ccedil;&atilde;o para serem
+  inclu&iacute;dos em sua epop&eacute;ia. (Embora tenha o cuidado de ler qualquer
+  mensagem de direitos autorais que pode estar inclu&iacute;da a eles). <br>
+  <br>
+  A menos que voc&ecirc; planeje usar MD2 todo o tempo, eu espero que voc&ecirc;
+  estar&aacute; usando o comando LoadAnimMesh que faz a mesma coisa que a instru&ccedil;&atilde;o
+  LoadMD2 (mas permite carregar anima&ccedil;&otilde;es X e 3DS) <br>
+  <br>
+  N&oacute;s n&atilde;o entraremos em quaisquer detalhes que envolvem criar anima&ccedil;&otilde;es
+  em um modelador, mas se voc&ecirc; estiver interessado eu estou seguro que qualquer
+  produto voc&ecirc; use conter&aacute; algum tipo de tutorial para criar anima&ccedil;&otilde;es.
+  (Voc&ecirc; dever&aacute; achar alguns tutorials sobre modelagem 3D em meu website
+  em breve) <br>
+  <br>
+  Os quadros de anima&ccedil;&atilde;o (keyframes) s&atilde;o carregados junto
+  com o modelo, tudo o que n&oacute;s temos que fazer &eacute; dizer ao B3D onde
+  come&ccedil;ar - e onde terminar! Antes de olharmos isto em a&ccedil;&atilde;o,
+  voc&ecirc; notar&aacute; que eu posicionei e girei o objeto para um novo ponto
+  de partida. Originalmente o personagem foi projetado voltado para a direita,
+  assim n&oacute;s precisamos gir&aacute;-lo 90 graus - para que ele fique voltado
+  para n&oacute;s. (Eu fiz isto usando o comando RotateEntity</font><font size="2">)</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2"><b><font face="Arial">AnimateMD2 man,1,.1,32,46</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Esta instru&ccedil;&atilde;o informa ao B3D que n&oacute;s
+  queremos que o objeto 'man' seja animado repetidamente (assim os quadros do
+  movimento de caminhada se reiniciam), a uma velocidade de .1, come&ccedil;ando
+  pelo quadro 32 e terminando no quadro 46 <br>
+  <br>
+  Quando n&oacute;s definimos o comando, a anima&ccedil;&atilde;o correr&aacute;
+  por si s&oacute; sem termos que fazer qualquer coisa a mais. <br>
+  <br>
+  Se n&oacute;s estiv&eacute;ssemos usando um objeto animado regular (X ou 3DS)
+  n&oacute;s usar&iacute;amos a instru&ccedil;&atilde;o Animate, que trabalha
+  precisamente como o AnimateMD2 que eu usei aqui neste exemplo. <br>
+  <br>
+  Como voc&ecirc; pode ver olhando o c&oacute;digo, eu defini um loop que continua
+  movendo o objeto para frente at&eacute; que o contador seja igual a 970. (usando
+  o comando MoveEntity) <br>
+  <br>
+  Depois disso a anima&ccedil;&atilde;o &eacute; reajustada para exibir a anima&ccedil;&atilde;o
+  de posi&ccedil;&atilde;o parada (frames 0-31). Por que n&atilde;o alterar o
+  programa para incluir rota&ccedil;&atilde;o, de forma que o personagem possa
+  se movimentar livremente? <br>
+  <br>
+  Embora eu tenha definido a anima&ccedil;&atilde;o para fazer repeti&ccedil;&otilde;es,
+  n&oacute;s podemos, &eacute; claro, fazer a anima&ccedil;&atilde;o correr apenas
+  uma vez se quis&eacute;ssemos. Para fazer isso basta voc&ecirc; mudar o par&acirc;metro
+  MODO na instru&ccedil;&atilde;o Animate. Aqui &eacute; a instru&ccedil;&atilde;o
+  por completo</font><font size="2">:</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial">Animate [nome da entidade],
+      [modo 0,1,2 ou 3], [velocidade], [sequ&ecirc;ncia], [transi&ccedil;&atilde;o]
+      </font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> No caso de MD2 voc&ecirc; usaria a instru&ccedil;&atilde;o:</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial, Helvetica, sans-serif">AnimateMD2
+      [nome de entidade], [modo 0, 1, 2 ou 3], [velocidade], [quadro inicial],
+      [quadro final],[transi&ccedil;&atilde;o] </font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> No caso de voc&ecirc; estar interessado, aqui &eacute; um informe
+  de todos os modos de anima&ccedil;&atilde;o que n&oacute;s podemos usar: (Se
+  lembre n&oacute;s usamos o modo de repetir a anima&ccedil;&atilde;o)</font></p>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial">0: Parar a anima&ccedil;&atilde;o
+      <br>
+      1: Repetir a anima&ccedil;&atilde;o <br>
+      2: Anima&ccedil;&atilde;o vai-e-volta <br>
+      3: Animar apenas uma vez </font></td>
+  </tr>
+</table>
+<p><font size="2">NOTA: Para animar de maneira reversa basta usar um valor de
+  velocidade negativo <br>
+  <br>
+  Felizmente o B3D faz anima&ccedil;&otilde;es muito facilmente. Realmente &eacute;
+  apenas um caso de montar tudo que n&oacute;s precisamos na anima&ccedil;&atilde;o
+  usando os v&aacute;rios par&acirc;metros da instru&ccedil;&atilde;o antes de
+  animarmos propriamente o objeto. Por&eacute;m, para fazer a anima&ccedil;&atilde;o
+  parecer convincente voc&ecirc; precisa pegar o tempo certo. Quantas vezes voc&ecirc;
+  viu em um jogo o personagem parecer deslizar sobre o ch&atilde;o ao inv&eacute;s
+  de estar caminhando sobre ele? <br>
+  <br>
+  Mas isso &eacute; metade da divers&atilde;o! Como voc&ecirc; ver&aacute;, um
+  pequeno esfor&ccedil;o realmente pode fazer uma diferen&ccedil;a grande. <br>
+  <br>
+  O B3D cont&eacute;m uma grande quantidade de comandos de anima&ccedil;&atilde;o
+  que servir&atilde;o para todo prop&oacute;sito que voc&ecirc; possa precisar.
+  Se aprofundando mais voc&ecirc; ver&aacute; incr&iacute;veis comandos que entrela&ccedil;am
+  os quadros de anima&ccedil;&atilde;o. Por exemplo, um objeto de um homem correndo
+  pode mudar suavemente para a anima&ccedil;&atilde;o dele estando parado. Se
+  voc&ecirc; rodar este exemplo algumas vezes e olhar o ponto onde o objeto p&aacute;ra
+  voc&ecirc; notar&aacute; o salto. Mas, usando estes comandos n&oacute;s poder&iacute;amos
+  suavizar a mudan&ccedil;a de forma que ela n&atilde;o fosse percebida. Embora
+  eu n&atilde;o use estes comandos neste tutorial, eu posso acrescentar um novo
+  tutorial sobre o assunto brevemente. <br>
+  <br>
+  Ent&atilde;o, o que est&aacute; esperando? V&aacute; e crie o pr&oacute;ximo
+  Quake!</font></p>
+</font>
+<p><font face="verdana">
+  <center>
+    <font color="#808080" size="2">Tutorial 5 - <a href="page5_br.html">Texturas</a></font>
+  </center>
+  </font> </p></body></html>

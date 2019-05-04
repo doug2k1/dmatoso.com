@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>5. Texturas</title>
+</head><body><font face="verdana">
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="4">&nbsp;5. Texturas</font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Como texturizar um
+        objeto<br>
+        &nbsp;<b>N&iacute;vel</b>: Intermedi&aacute;rio<br>
+        &nbsp;<b>Arquivos</b>: <a href="texture.bb">texture.bb</a> / <a href="blitztexture.bmp">blitztexture.bmp</a> 
+        </font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"> <p align="right"><font size="2" face="verdana"> <img src="7c.jpg" alt="Texturing" width="166" height="127">
+        </font> </p></td>
+  </tr>
+</table>
+<p><font size="2"> Para nossos objetos parecerem mais real&iacute;sticos n&oacute;s
+  realmente precisamos dar textura a eles, mas o que &eacute; texturizar? Pense
+  nisto como um modo de acrescentar detalhes extras a um objeto. Por exemplo:
+  Voc&ecirc; projeta um cubo branco comum. N&atilde;o parece muito interessante,
+  n&atilde;o &eacute;? <br>
+  <br>
+  Mas acrescente uma textura a ele, e de repente voc&ecirc; tem um belo cubo!
+  <br>
+  Texturas s&atilde;o imagens que foram projetados com um programa de desenho
+  (que possa salvar nos formatos aceitos pelo Blitz, como BMP, JPG, PNG, TGA,
+  PCX, etc.) <br>
+  <br>
+  Outro exemplo: Se voc&ecirc; projetasse um modelo b&aacute;sico de uma criatura,
+  usando uma textura voc&ecirc; poderia acrescentar todas as caracter&iacute;sticas
+  externas - como roupas e express&otilde;es faciais. <br>
+  <br>
+  Embora o B3D tenha v&aacute;rios comandos para administrar texturas m&uacute;ltiplas
+  e efeitos especiais, por enquanto n&oacute;s estaremos usando apenas o comando
+  b&aacute;sico EntityTexture. <br>
+  Claro que n&oacute;s poder&iacute;amos economizar tempo projetando nossos objetos
+  e aplicando as texturas diretamente em um programa de modelagem, mas isso faria
+  deste tutorial um desperd&iacute;cio de tempo! <br>
+  <br>
+  Ent&atilde;o por que ir&iacute;amos querer aplicar uma textura em tempo real?
+  Bem, uma textura nova pode ser posta a qualquer hora sobre o objeto. Pegue uma
+  parede, atire nela! Para coisas parecerem real&iacute;sticas em nosso mundo
+  3D, n&oacute;s gostar&iacute;amos de ter alguma indica&ccedil;&atilde;o de que
+  a parede foi atingida. N&oacute;s poder&iacute;amos fazer isto carregando uma
+  textura de um buraco de bala diretamente sobre a parede. Todo jogo 3D atualmente
+  no mercado usa artif&iacute;cios de textura de uma forma ou outra. Assim como
+  aumenta sua experi&ecirc;ncia, aumenta sua imagina&ccedil;&atilde;o! Por que
+  ter um rio liso, quando voc&ecirc; pode usar texturas para dar a impress&atilde;o
+  de ondula&ccedil;&otilde;es? <br>
+  <br>
+  O B3D tem muitos recursos interessantes para n&oacute;s usarmos, inclusive as
+  texturas ANIMADAS. N&oacute;s estaremos usando isto mais tarde! (Quake I/II/III
+  usa este truque para nos dar a impress&atilde;o de &aacute;gua movimentando)
+  <br>
+  <br>
+  Vamos ver isso na pr&aacute;tica</font><font size="2">:</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp; <font face="arial">Graphics3D 800,600<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp; light=CreateLight()<br>
+      <br>
+      &nbsp; cube=CreateCube()<br>
+      &nbsp; PositionEntity cube,0,0,5<br>
+      <br>
+      &nbsp; texture=LoadTexture("blitztexture.bmp")<br>
+      &nbsp; EntityTexture cube,texture<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp; TurnEntity cube,0.1,0.2,0.3<br>
+      <br>
+      &nbsp; UpdateWorld<br>
+      &nbsp; RenderWorld<br>
+      <br>
+      &nbsp; Text 340,500,&quot;Demonstra&ccedil;&atilde;o de Textura&quot;<br>
+      <br>
+      &nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      &nbsp; End<br>
+      <br>
+      </font></font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2"> Como voc&ecirc; pode ver, uma textura pode fazer toda a diferen&ccedil;a
+  a um objeto muito b&aacute;sico. <br>
+  <br>
+  As &uacute;nicas 2 linhas de c&oacute;digo que n&oacute;s ainda n&atilde;o conhecemos
+  s&atilde;o</font><font size="2">: </font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%">
+<font size="2"><b>
+<font face="Arial">texture=LoadTexture(&quot;blitztexture.bmp&quot;)<br>
+EntityTexture cube,texture</font></b>
+    </font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Dois comandos amig&aacute;veis. O primeiro carrega uma textura
+  - com a vari&aacute;vel 'texture' apontando para ela. <br>
+  <br>
+  Uma vez que n&oacute;s carregamos a textura, n&oacute;s a aplicamos ao objeto
+  com o comando EntityTexture. (Aqui n&oacute;s estamos aplicando a textura 'texture'
+  ao objeto 'cube') <br>
+  <br>
+  Voc&ecirc; pode, se voc&ecirc; quiser, abrir o arquivo BLITZTEXTURE.BMP no MS
+  Paint e fazer altera&ccedil;&otilde;es! <br>
+  <br>
+  &Eacute; isso a&iacute;! Uma palavra r&aacute;pida de conselho: Se seu objeto
+  n&atilde;o aparecer texturizado como deveria, sempre verifique se as texturas
+  est&atilde;o no diret&oacute;rio certo. &Eacute; muito f&aacute;cil gastar meio
+  dia tentando resolver um problema de textura, e depois descobrir que voc&ecirc;
+  moveu o programa a outro diret&oacute;rio sem arrastar os arquivos de textura
+  associados com ele. </font></p>
+<center>
+  <font color="#808080" size="2">Tutorial 6 - <a href="page6_br.html">Ilumina&ccedil;&atilde;o</a></font>
+</center>
+</font></body></html>

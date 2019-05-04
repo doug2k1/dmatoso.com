@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>1. Prepara&ccedil;&atilde;o</title>
+</head>
+
+<body><font face="verdana">
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="4">&nbsp;1. Prepara&ccedil;&atilde;o</font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Preparar um simples
+        programa em Blitz3D<br>
+        &nbsp;<b>N&iacute;vel</b>: Iniciante<br>
+        &nbsp;<b>Arquivos:</b> <a href="settingup.bb">settingup.bb</a></font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"><font size="2" face="verdana"><img src="1c.jpg" alt="Setting Up" width="165" height="128" align="right">
+      </font> </td>
+  </tr>
+</table>
+<p><font size="2">Blitz3D possui todos os comandos do Blitz2D, al&eacute;m dos
+  comandos exclusivos para lidar com gr&aacute;ficos 3D. Isso facilita para quem
+  j&aacute; usou o Blitz2D, pois poder&aacute; usar muitos dos comandos j&aacute;
+  conhecidos.</font></p>
+<p><font size="2"> Vamos dar uma olhada no nosso primeiro programa.</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp; <font face="arial">Graphics3D 800,600<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp; light=CreateLight()<br>
+      <br>
+      &nbsp; cube=CreateCube()<br>
+      &nbsp; PositionEntity cube,0,0,5<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TurnEntity cube,.1,.2,.3<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UpdateWorld<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RenderWorld<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Text 320,500,&quot;Primeiro programa em Blitz3D&quot;<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      &nbsp; End<br>
+      <br>
+      </font></font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2"> Execute o programa acima. Voc&ecirc; ver&aacute; um cubo 3D
+  girando e uma mensagem. Nada mau para apenas 15 linhas de c&oacute;digo.</font></p>
+<p><font size="2"> Ent&atilde;o, o que est&aacute; acontecendo nesse programa?
+  Vamos observar...</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2"><b><font face="Arial">Graphics3D 800,600</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Talvez a linha mais importante do programa, essa instru&ccedil;&atilde;o
+  &eacute; respons&aacute;vel por inicializar o modo para exibi&ccedil;&atilde;o
+  de gr&aacute;ficos 3D. Como voc&ecirc; deve ter adivinhado eu estou estabelecendo
+  uma resolu&ccedil;&atilde;o de tela de 800x600 pixels. Se voc&ecirc; tiver problemas
+  para rodar este exemplo, mude estes valores. (Nem todas as placas de v&iacute;deo
+  suportam as mesmas resolu&ccedil;&otilde;es)</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">SetBuffer BackBuffer()</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Este comando &eacute; usado para &quot;double buffering&quot;.
+  Basicamente isso significa que enquanto uma tela &eacute; mostrada (front buffer)
+  outra vai sendo desenhada (back buffer).</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">camera=CreateCamera()<br>
+      CameraViewport camera,0,0,800,600</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Estas instru&ccedil;&otilde;es s&atilde;o respons&aacute;veis
+  pela c&acirc;mera. A primeira cria uma c&acirc;mera e a segunda estabelece toda
+  a tela como sendo a &aacute;rea vis&iacute;vel da c&acirc;mera.<br>
+  Por que precisamos de uma camera? Porque &eacute; atrav&eacute;s dela que podemos
+  ver o que acontece no nosso mundo 3D. Podemos ter v&aacute;rias c&acirc;meras
+  em nosso programa. Por exemplo para simular um circuito interno de TV com c&acirc;meras
+  fixas em v&aacute;rias partes do cen&aacute;rio.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">light=CreateLight()</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> N&oacute;s colocamos um ponto de luz com esse comando. Por
+  padr&atilde;o o Blitz3D j&aacute; fornece uma luz, portanto esse comando n&atilde;o
+  &eacute; realmente necess&aacute;rio.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">cube=CreateCube()</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Para criar nosso cubo eu usei um comando pr&oacute;prio do
+  Blitz3D, ao inv&eacute;s de cri&aacute;-lo com um programa de modelagem.<br>
+  <br>
+  <b>NOTA:</b> O Blitz3D cont&eacute;m uma s&eacute;rie de comandos para criar
+  formas primitivas como cubo, esfera, cone e cilindro.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">PositionEntity cube,0,0,5</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Por padr&atilde;o as entidades s&atilde;o criadas no ponto
+  0,0,0 (x,y,z). Este comando posiciona entidades nas coordenadas desejadas -
+  inclusive a c&acirc;mera. Lembre-se que usando coordenadas negativas os objetos
+  s&atilde;o movidos para o lado oposto. Por exemplo: PositionEntity cube,3,-2,7
+  vai posicionar o cubo 3 unidades para a direita, 2 unidades para cima e 7 unidade
+  para o fundo (afastando).</font></p>
+<p><font size="2"> Esse comando &eacute; usado mais frequentemente no in&iacute;cio
+  do programa para posicionar tudo nos devidos lugares.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">While Not KeyHit(1)</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> O in&iacute;cio do loop principal. Os comandos dentro do loop
+  se repetir&atilde;o enquanto a tecla ESC n&atilde;o for pressionada.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">TurnEntity cube,0.1,0.2,0.3</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Este comando ser&aacute; muito usado em seus programas. Sua
+  fun&ccedil;&atilde;o &eacute; girar um objeto nos eixos x, y e z. Nesse caso
+  x = 0.1, y = 0.2 e z = 0.3 (valores negativos fazem girar para o lado contr&aacute;rio).</font></p>
+<p><font size="2"> Importante: Esse comando gira o objeto bem como seus eixos.
+  Por exemplo, voc&ecirc; criou um foguete apontado para cima e girou at&eacute;
+  que ele apontasse para baixo. O eixo y (vertical) agora est&aacute; invertido.
+  Isso far&aacute; mais sentido quando voc&ecirc; estiver mais acostumado com
+  o sistema de coordenadas.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">UpdateWorld<br>
+      RenderWorld</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> O comando UpdateWorld atualiza as coordenadas das entidades
+  que se moveram, giraram, ou mudaram de tamanho e checa as colis&otilde;es que
+  podem ter acontecido. Sem este comando seu mundo ser&aacute; est&aacute;tico.
+  <br>
+  O comando RenderWorld redesenha os objetos em suas posi&ccedil;&otilde;es atuais.
+  </font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"><font size="2"><b><font face="Arial">Text 320,500,&quot;</font><font size="2"><font face="arial">Primeiro 
+      programa em Blitz3D</font></font><font face="Arial">"<br>
+      Flip<br>
+      Wend<br>
+      End</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Esta &uacute;ltima parte primeiramente imprime uma mensagem
+  na tela (deve ser feita em cada repeti&ccedil;&atilde;o do loop). Essa &eacute;
+  uma boa hora para desenhar qualquer coisa na tela usando comandos do Blitz2D.<br>
+  O comando Flip troca o &quot;front buffer&quot; com o &quot;back buffer&quot;,
+  fazendo aparecer na tela o que estava sendo desenhado no back buffer. O comando
+  Wend marca o fim do loop, e o comando End termina o programa (quando a tecla
+  ESC tiver sido pressionada).</font></p>
+</font>
+<p align="center"><font color="#808080" size="2" face="Verdana, Arial, Helvetica, sans-serif">&Eacute;
+  isso a&iacute;! Chegamos ao fim de nosso primeiro programa<br>
+  Tutorial 2 - <a href="page2_br.html">Movimento e Rota&ccedil;&atilde;o</a></font></p></body></html>

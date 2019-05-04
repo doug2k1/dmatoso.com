@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>6. Ilumina&ccedil;&atilde;o</title>
+</head><body>
+
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="4">&nbsp;6. Ilumina&ccedil;&atilde;o</font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Iluminar uma cena<br>
+        &nbsp;<b>N&iacute;vel</b>: Intermedi&aacute;rio<br>
+        &nbsp;<b>Arquivos</b>: <a href="lights.bb">lights.bb</a></font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"> <p align="right"><font size="2" face="verdana"> <img src="4c.jpg" alt="Lighting" width="166" height="127">
+        </font> </p></td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana, Arial, Helvetica, sans-serif">Agora que j&aacute;
+  podemos mover objetos (e n&oacute;s mesmos), texturizar objetos, animar... ent&atilde;o
+  o que faremos agora? <br>
+  <br>
+  Que tal ilumina&ccedil;&atilde;o? Usada corretamente n&oacute;s podemos fazer
+  nosso pequeno mundo ganhar uma melhor ambienta&ccedil;&atilde;o. <br>
+  <br>
+  Por padr&atilde;o, o B3D j&aacute; nos d&aacute; uma luz em nossa cena, apontando
+  diretamente na tela. Pense nisto como uma tocha presa em cima da c&acirc;mera,
+  iluminando tudo o que podemos ver. <br>
+  <br>
+  C&oacute;digo-fonte</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">:</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      <font face="arial"> &nbsp; Graphics3D 800,600<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp; AmbientLight 0,0,0<br>
+      <br>
+      &nbsp; ;cube 1<br>
+      &nbsp; cube=CreateCube()<br>
+      &nbsp; PositionEntity cube,0,0,5<br>
+      <br>
+      &nbsp; light=CreateLight(3)<br>
+      &nbsp; LightColor light,100,20,30<br>
+      &nbsp; LightConeAngles light,0,45<br>
+      &nbsp; PositionEntity light,0,0,0.5<br>
+      &nbsp; LightRange light,8<br>
+      &nbsp; PointEntity light,cube<br>
+      <br>
+      &nbsp; ;cube 2<br>
+      &nbsp; cube2=CopyEntity(cube)<br>
+      &nbsp; PositionEntity cube2,-5,0,8<br>
+      <br>
+      &nbsp; light2=CreateLight(3)<br>
+      &nbsp; LightColor light2,40,150,60<br>
+      &nbsp; LightConeAngles light2,0,45<br>
+      &nbsp; PositionEntity light2,-5,0,4.5<br>
+      &nbsp; LightRange light2,8<br>
+      &nbsp; PointEntity light2,cube2<br>
+      <br>
+      &nbsp; ;cube 3<br>
+      &nbsp; cube3=CopyEntity(cube)<br>
+      &nbsp; PositionEntity cube3,5,0,8<br>
+      <br>
+      &nbsp; light3=CreateLight(3)<br>
+      &nbsp; LightColor light3,70,80,190<br>
+      &nbsp; LightConeAngles light3,0,45<br>
+      &nbsp; PositionEntity light3,5,0,4.5<br>
+      &nbsp; LightRange light3,8<br>
+      &nbsp; PointEntity light3,cube3<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp; TurnEntity cube,0.1,0.2,0.3<br>
+      &nbsp; TurnEntity cube2,0.3,0.2,0.1<br>
+      &nbsp; TurnEntity cube3,0.3,0.2,0.1<br>
+      <br>
+      &nbsp; UpdateWorld<br>
+      &nbsp; RenderWorld<br>
+      <br>
+      &nbsp; Text 310,500,&quot;Demonstra&ccedil;&atilde;o de Ilumina&ccedil;&atilde;o&quot;<br>
+      <br>
+      &nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      &nbsp; End<br>
+      <br>
+      </font></font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana, Arial, Helvetica, sans-serif">H&aacute; v&aacute;rios
+  comandos novos a serem observados aqui. <br>
+  <br>
+  Se lembre daquela tocha sobre a qual eu falei? Bem o primeiro comando novo que
+  n&oacute;s aprenderemos &eacute; estritamente por mudar a cor dessa luz.</font></p>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>AmbientLight 0,0,0</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> Isto deixa a luz ambiente na cor preto (sem luz), de forma que qualquer luz
+  adicional que n&oacute;s usarmos ter&aacute; seu efeito maximizado. A primeira
+  coisa a se lembrar &eacute; que quando usamos este comando os valores de cor
+  variam de 0 a 255, e n&oacute;s temos 3 cores separadas: VERMELHO, VERDE &amp;
+  AZUL. (RGB, igual a uma TELEVIS&Atilde;O) <br>
+  <br>
+  Mudando estes valores n&oacute;s podemos conseguir qualquer cor que n&oacute;s
+  quisermos, como dexiar tudo em 255 resultar&aacute; na cor branca. &Eacute;
+  normalmente mais f&aacute;cil trabalhar com estes valores em um programa de
+  desenho como o Paintshop Pro.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>light=CreateLight(3)</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> O B3D nos deixa usar tr&ecirc;s tipos diferentes de luzes. Como com a instru&ccedil;&atilde;o
+  Animate estes s&atilde;o selecionados com par&acirc;metros. Eles s&atilde;o:</p>
+</font>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial">1: LUZ DIRECIONAL - Como a luz
+      do Sol, que ilumina tudo para onde ela aponta. <br>
+      2: PONTO DE LUZ - Como uma l&acirc;mpada, iniciando em um ponto e enfraquecendo
+      ao redor <br>
+      3: CONE DE LUZ- Como uma tocha, se inicia em um &acirc;ngulo e termina em
+      outro &acirc;ngulo maior. </font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> Para esta demonstra&ccedil;&atilde;o eu escolhi usar a forma CONE DE LUZ.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>LightColor light,100,20,30</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> O mesmo que na instru&ccedil;&atilde;o AmbientLight, este comando nos deixa
+  selecionar a cor da luz. Aqui eu defini na forma VERMELHO=100, VERDE=20 e AZUL=30
+  que nos d&aacute; um brilho avermelhado agrad&aacute;vel.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>LightConeAngles light,0,45</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> N&oacute;s usamos esta instru&ccedil;&atilde;o para controlar o &acirc;ngulo
+  de luz que vem de nosso refletor. Neste caso eu fixei em 45 graus. Em outras
+  palavras: A luz tem um raio de 45 graus, qualquer parte do objeto que est&aacute;
+  fora disto n&atilde;o ser&aacute; iluminada.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>PositionEntity light,0,0,0.5</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> Posicionamos a luz.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>LightRange light,8</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p> Isto controla o alcance da luz, que eu fixei em 8 unidades. Se eu quisesse
+  que a luz iluminasse mais distante ent&atilde;o eu aumentaria este valor.</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>PointEntity light,cube</b></font></td>
+  </tr>
+</table>
+
+<p> <font size="2" face="Verdana, Arial, Helvetica, sans-serif">Este comando apontar&aacute;
+  a luz para nosso cubo. N&atilde;o importa onde a luz esteja, ela apontar&aacute;
+  para o cubo. Mas se depois voc&ecirc; move o objeto ou a luz ent&atilde;o voc&ecirc;
+  ter&aacute; que reapontar com este comando. </font></p>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Outra coisa que
+  voc&ecirc; deve ter em mente &eacute; se a luz e objeto podem ver um ao outro.
+  (dependendo do alcance da luz) <br>
+  </font></p>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Eu n&atilde;o entrarei
+  em detalhes no resto do programa. Voc&ecirc; deve ser capaz de entender o que
+  est&aacute; acontecendo sem ajuda adicional. <br>
+  <br>
+  Onde est&atilde;o os efeitos de raios de luz? Bem, no momento o B3D n&atilde;o 
+  tem nenhum comando embutido para isso - sendo assim voc&ecirc; mesmo tem que 
+  programar isso. E acredite em mim, &eacute; poss&iacute;vel com pouco esfor&ccedil;o. 
+  Eu vi alguns dos testadores beta fazendo efeitos de ilumina&ccedil;&atilde;o 
+  que se igualam a Unreal! Mas esse &eacute; assunto para outro tutorial...</font></p>
+<p align="center">
+  <center>
+    <font color="#808080" size="2" face="Verdana, Arial, Helvetica, sans-serif">Tutorial
+    7 - <a href="page7_br.html">Colis&otilde;es</a></font>
+  </center></body></html>

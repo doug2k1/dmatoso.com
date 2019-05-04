@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BlitzBasic -&gt; BBCode</title>
+<link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="main">
+<h1>BlitzBasic -&gt; BBCode</h1>
+<p>Esta ferramenta vai adicionar tags de cores no formato BBCode em códigos-fonte de BlitzBasic (Blitz3D).<br />
+Atualmente reconhece todas as palavras-chave do Blitz3D 1.97. </p>
+<p>Desenvolvido por <strong>Douglas Matoso</strong>.</p>
+<h3>Conversor</h3>
+<div id="form">
+<h4>Cores</h4>
+<div>
+<label>Palavras-Chaves</label><select name="keywords_color">
+	<option value="null">Normal</option>
+	<option value="blue" selected="selected" class="blue">Azul</option>
+	<option value="red" class="red">Vermelho</option>
+	<option value="green" class="green">Verde</option>
+</select>
+</div>
+<div>
+<label>Comentários</label><select name="comments_color">
+	<option value="null">Normal</option>
+	<option value="blue" class="blue">Azul</option>
+	<option value="red" class="red">Vermelho</option>
+	<option value="green" selected="selected" class="green">Verde</option>
+</select>
+</div>
+<div>
+<label>Strings</label><select name="strings_color">
+	<option value="null">Normal</option>
+	<option value="blue" class="blue">Azul</option>
+	<option value="red" selected="selected" class="red">Vermelho</option>
+	<option value="green" class="green">Verde</option>
+</select>
+</div>
+<div>
+<label>Números</label><select name="digits_color">
+	<option value="null" selected="selected">Normal</option>
+	<option value="blue" class="blue">Azul</option>
+	<option value="red" class="red">Vermelho</option>
+	<option value="green" class="green">Verde</option>
+</select>
+</div>
+<h4>Código</h4>
+<h6>Cole seu código abaixo:</h6>
+<div>
+<textarea name="code" cols="60" rows="10" wrap="off"></textarea>
+</div>
+<div class="submit">
+<input type="submit" value="&gt;&gt; Converter &gt;&gt;" />
+</div>
+<h3>Resultado</h3>
+<h6>Este é o código resultante. Copie e cole no seu post!</h6>
+<div>
+<textarea name="new_code" cols="60" rows="10" wrap="off"></textarea>
+</div>
+<h4>Visualização</h4>
+<h6>Seu código vai aparecer assim no fórum:</h6>
+<div id="code">
+</div>
+</div>
+</div>
+</body>
+</html>

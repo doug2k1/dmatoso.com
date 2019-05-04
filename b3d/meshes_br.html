@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a Malhas</title>
+</head>
+
+<body>
+<center>
+  <h1><font size="4" face="Verdana">Introdu&ccedil;&atilde;o a Malhas</font></h1>
+</center>
+<p><font size="2" face="Verdana">Malhas s&atilde;o entidades com as quais voc&ecirc; 
+  freq&uuml;entemente vai estar trabalhando - a menos que voc&ecirc; esteja escrevendo 
+  algo estranho (por favor fa&ccedil;a isso...)! <br>
+  <br>
+  Malhas s&atilde;o compostas de v&eacute;rtices e tri&acirc;ngulos, e podem ser 
+  carregadas de arquivos (talvez o resultado de um programa modelador 3D), ou 
+  constru&iacute;das 'na m&atilde;o' (montadas dentro de um programa B3D em tempo 
+  real).</font> </p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Carregando 
+  malhas&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">H&aacute; 2 comandos providos para carregar arquivos 
+  de malhas - ' LoadMesh' e ' LoadAnimMesh' ambos carregam arquivos ' .X ' ou 
+  ' .3DS ' e retornam o identicador daquela entidade. Ent&atilde;o qual &eacute; 
+  a diferen&ccedil;a? <br>
+  <br>
+  Modelos armazenados em arquivos normalmente s&atilde;o feitos de v&aacute;rias 
+  'partes'. No caso de um modelo humano, estas partes podem representar bra&ccedil;os, 
+  pernas etc. <br>
+  <br>
+  Al&eacute;m disso, arquivos tamb&eacute;m cont&ecirc;m informa&ccedil;&atilde;o 
+  de anima&ccedil;&atilde;o, que s&atilde;o carregadas com o comando 'LoadAnimMesh'. 
+  A entidade retornada na verdade ser&aacute; a entidade de pai do grupo inteiro 
+  de 'partes filhas'. <br>
+  <br>
+  Ent&atilde;o, 'LoadAnimMesh' realmente carrega v&aacute;rias malhas! <br>
+  <br>
+  Se voc&ecirc; n&atilde;o precisar animar um modelo, voc&ecirc; pode usar 'LoadMesh'. 
+  Isto vai 'juntar' todas as partes em uma malha e retorna uma &uacute;nica, combinada 
+  malha. A malha retornada &eacute; igual a que &eacute; retornada com o LoadAnimMesh, 
+  s&oacute; que voc&ecirc; n&atilde;o pode anim&aacute;-la, e ela n&atilde;o t&ecirc;m 
+  qualquer malha filha. <br>
+  <br>
+  Por que usar o LoadMesh ent&atilde;o? Velocidade! - &Eacute; mais r&aacute;pido 
+  para o B3D lidar com uma &uacute;nica malha que com um grupo delas, assim se 
+  voc&ecirc; n&atilde;o est&aacute; planejando animar ou fazer qualquer coisa 
+  especial com uma malha, use LoadMesh.</font> </p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Criando 
+  malhas&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">Antes come&ccedil;ar a criar malhas, voc&ecirc; 
+  precisar&aacute; saber sobre 'Brushes' (a tradu&ccedil;&atilde;o seria 'brocha' 
+  ou 'pincel', mas vamos chamar de brush mesmo) em Blitz3D. Um 'Brush' &eacute; 
+  uma cole&ccedil;&atilde;o de propriedades usada ao fazer tri&acirc;ngulos. Estas 
+  propriedades s&atilde;o: <br>
+  <br>
+  <b>Cor</b> - A cor que um tri&acirc;ngulo &eacute; feito. (veja BrushColor) 
+  <br>
+  <br>
+  <b>Textura</b> - De 0 a 8 mapas de textura que s&atilde;o usados para fazer 
+  um tri&acirc;ngulo. (veja BrushTexture) <br>
+  <br>
+  <b>Alfa</b> - A transpar&ecirc;ncia do um tri&acirc;ngulo. Alfa pode variar 
+  de 0 (completamente transparente) para 1 (completamente opaco). (veja BrushAlpha) 
+  <br>
+  <br>
+  <b>Brilho</b> - A 'claridade' de um tri&acirc;ngulo. Este valor pode variar 
+  de 0 (escuro) para 1 (realmente claro). (veja BrushShininess) <br>
+  <br>
+  <b>Blend</b> - Blend descreve como um tri&acirc;ngulo &eacute; combinado com 
+  o que j&aacute; est&aacute; na tela. (veja BrushBlend) <br>
+  <br>
+  <b>Efeitos</b> - efeitos especiais opcionais. (veja BrushFX) <br>
+  <br>
+  Para criar um brush, voc&ecirc; usa o comando CreateBrush:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;cria um brush.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>brush=CreateBrush()</b><br>
+      </font><br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Uma vez que temos um brush, n&oacute;s podemos 
+  fixar suas propriedades:</font> </p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;um brush vermelho<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>BrushColor brush,255,255,0</b></font></font> 
+      <p><font size="2" face="Arial">&nbsp;&nbsp;;com brilho m&aacute;ximo&nbsp;<br>
+        </font><font size="2">&nbsp;&nbsp; <font face="Arial"><b>BrushShininess 
+        brush,1</b></font><br>
+        <br>
+        </font></p></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">O que tudo isso tem a ver com malhas? <br>
+  <br>
+  Bem, quando eu disse que malhas s&atilde;o compostas de v&eacute;rtices e tri&acirc;ngulos, 
+  eu meio que menti! Malhas s&atilde;o feitas de fato de 'superf&iacute;cies', 
+  e superf&iacute;cies s&atilde;o compostas de v&eacute;rtices e tri&acirc;ngulos! 
+  <br>
+  <br>
+  Quando uma superf&iacute;cie &eacute; criada, voc&ecirc; lhe fornece um brush 
+  que controla como s&atilde;o feitos todos os tri&acirc;ngulos na superf&iacute;cie. 
+  <br>
+  <br>
+  Uma revis&atilde;o r&aacute;pida: </font></p>
+<ul>
+  <li><font size="2" face="Verdana">Uma malha &eacute; composta de um n&uacute;mero 
+    de superf&iacute;cies. </font></li>
+  <li><font size="2" face="Verdana">Cada superf&iacute;cie em uma malha cont&eacute;m 
+    um n&uacute;mero de vertices e tri&acirc;ngulos. </font></li>
+  <li><font size="2" face="Verdana">Todos os tri&acirc;ngulos em uma superf&iacute;cie 
+    s&atilde;o feitos usando o mesmo brush.</font></li>
+</ul>
+<p><font size="2" face="Verdana">Vamos nos aprofundar um pouco e criar uma malha 
+  simples:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<font face="Arial"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>brush=CreateBrush()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 
+      ; cria um brush<br>
+      &nbsp;&nbsp;&nbsp; <b>BrushColor brush,255,0,0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </b>; torna o brush vermelho</font></font> <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; 
+        <b>mesh=CreateMesh()&nbsp;&nbsp;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        ; cria uma malha<br>
+        </font><font size="2">&nbsp;&nbsp;&nbsp; &nbsp;<font face="Arial"><b> 
+        surf=CreateSurface( mesh,brush)&nbsp;&nbsp;&nbsp;</b> ; cria uma superf&iacute;cie 
+        vermelha</font></font></p>
+      <p><font size="2" face="Arial">&nbsp;&nbsp;&nbsp; <b>AddVertex surf,-1,1,0</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        ; Adicionamos 4 v&eacute;rtices...<br>
+        &nbsp;&nbsp;&nbsp; <b>AddVertex surf,1,1,0&nbsp;<br>
+        &nbsp;&nbsp;&nbsp; AddVertex surf,1-,1,0&nbsp;<br>
+        &nbsp;&nbsp;&nbsp; AddVertex surf,-1,-1,0</b></font></p>
+      <p><font size="2" face="Arial"><b>&nbsp;&nbsp;&nbsp; AddTriangle surf,0,1,2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        </b>; e 2 tri&acirc;ngulos...<b><br>
+        &nbsp;&nbsp;&nbsp; AddTriangle surf,0,2,3</b></font></p>
+      <p><font size="2" face="Arial"><b>&nbsp;&nbsp;&nbsp; UpdateNormals mesh</b>&nbsp;</font><font size="2"><br>
+        <br>
+        </font></p></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Este c&oacute;digo criar&aacute; um quadrado 
+  vermelho simples. <br>
+  <br>
+  Mas o que &eacute; esse estranho comando: 'UpdateNormals'? Bem, para que uma 
+  malha seja iluminada corretamente, seus 'v&eacute;rtices normais' devem ser 
+  calculados. Sem entrar em detalhes, o comando UpdateNormals far&aacute; isto 
+  para voc&ecirc;. Se voc&ecirc; sabe como as normais funcionam, voc&ecirc; pode 
+  definir suas pr&oacute;prias normais usando o comando VertexNormal. Se n&atilde;o, 
+  apenas se lembre de inserir um 'UpdateNormals' ao t&eacute;rmino de qualquer 
+  modifica&ccedil;&atilde;o de malha que voc&ecirc; faz, ou ent&atilde;o suas 
+  malhas n&atilde;o ser&atilde;o iluminadas corretamente. <br>
+  <br>
+  Note que voc&ecirc; pode criar qualquer n&uacute;mero de superf&iacute;cies 
+  que voc&ecirc; queira. Assim, a mesma malha pode conter muitos tri&acirc;ngulos 
+  diferentemente coloridos/texturizados/qualquer coisa! <br>
+  <br>
+  Por que preocupar com superf&iacute;cies afinal de contas? Por que n&atilde;o 
+  apenas criar um grupo de malhas separadas, cada com suas pr&oacute;prias propriedades 
+  e pular toda essa tolice de superf&iacute;cie? Bem, novamente vem o fator VELOCIDADE! 
+  &Eacute; mais r&aacute;pido para o Blitz3D controlar superf&iacute;cies m&uacute;ltiplas 
+  - que n&atilde;o podem ser movidas ou giradas como entidades - que controlar 
+  malhas m&uacute;ltiplas.</font> </p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Modificando 
+  Malhas&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Uma vez que voc&ecirc; criou uma malha, h&aacute; 
+  v&aacute;rios comandos dispon&iacute;veis para modificar a malha em tempo real. 
+  Isto pode ser usado para criar uma gama de efeitos especiais impressionantes 
+  como bandeiras tremulantes, ondula&ccedil;&atilde;o de &aacute;gua e assim por 
+  diante. <br>
+  <br>
+  Estes comandos s&atilde;o:</font></p>
+<ul>
+  <li><font size="2" face="Verdana"><b>VertexCoords</b> - Muda as coordenadas 
+    de um v&eacute;rtice.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"><b>VertexColor</b> - Muda a cor de um v&eacute;rtice.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"><b>VertexTexCoords</b> - Muda as coordenadas 
+    de uma textura em um v&eacute;rtice.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"><b>VertexNormal</b> - Muda a normal de um 
+    v&eacute;rtice.</font></li>
+</ul>
+<p><font size="2" face="Verdana">Para mais informa&ccedil;&otilde;es em como usar 
+  estes comandos, d&ecirc; uma olhada mais adiante no tutorial sobre v&eacute;rtices.</font></p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen 
+    - GamecodingUK</font> 
+  </center>
+</p>
+</body>
+</html>

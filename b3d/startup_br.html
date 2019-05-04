@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>Bem-vindo ao Blitz3D</title>
+</head><body>
+
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="20%" valign="top">
+      <p align="center"><img border="0" src="b3dlogo_small.jpg" width="150" height="74"></td>
+    <td width="60%"><h1><center>
+          <font face="Verdana"><span style="background-color: #6098C8"><br>
+          <font color="#FFFFFF">&nbsp;Bem-vindo ao Blitz3D</font>&nbsp;</span></font>
+        </center></h1>
+
+      <p align="center"><b><font face="Arial">&quot;A Linguagem de Cria&ccedil;&atilde;o
+        3D Definitiva&quot;</font></b></p>
+
+      <p align="center"><font face="Verdana"><b><font size="2">Por Paul Gerfen</font><br>
+        </b><font size="1">(c) Copyright 2001 Paul Gerfen<br>
+        &nbsp; <a href="http://www.gamecoding.co.uk">http://www.gamecoding.co.uk</a></font></font></p>
+      <p align="center"><font size="2" face="Verdana">Traduzido por Douglas 
+        Matoso [<a href="http://blog.dmatoso.com">http://blog.dmatoso.com</a>]</a></font></p>
+
+    </td>
+    <td width="20%" valign="top">
+      <p align="center"><img border="0" src="b3dlogo_small.jpg" align="right" width="150" height="74"></td>
+  </tr>
+</table>
+
+<p> <font face="Verdana"> <font size="2">Ol&aacute; amigos, aqui &eacute; Paul 
+  da Gamecoding. Recentemente me pediram para propor uma sele&ccedil;&atilde;o 
+  de tutoriais para iniciantes. Como eu sou, principalmente, um programador de 
+  jogos 2D - eu tamb&eacute;m poderia ser considerado como um novato total. <br>
+  <br>
+  B3D &eacute; uma linguagem incrivelmente poderosa, e acredite em mim - no momento 
+  que voc&ecirc; tiver passado por todos estes mini tutoriais, voc&ecirc; ter&aacute; 
+  o conhecimento b&aacute;sico para realizar seus sonhos e come&ccedil;ar a criar 
+  seus pr&oacute;prios projetos. <br>
+  <br>
+  Atualiza&ccedil;&otilde;es para este tutoriais como tamb&eacute;m notas extras,
+  podem ser encontrados em meu website <a href="http://www.gamecoding.co.uk" target="_blank">www.gamecoding.co.uk</a>
+  ou no website oficial do Blitz Basic , <a href="http://www.blitzbasic.com" target="_blank">www.blitzbasic.com</a></font></font>
+</p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;<font color="#FFFFFF">Base</font>&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Vamos come&ccedil;ar pelo que j&aacute; temos
+  e, mais importante, o que vamos precisar: <br>
+  <br>
+  Nenhuma d&uacute;vida que voc&ecirc; j&aacute; tenha dado uma olhada nas demonstra&ccedil;&otilde;es
+  que acompanham o Blitz3D. Elas s&atilde;o uma boa refer&ecirc;ncia para criar
+  um jogo de sucesso. Infelizmente nesta fase tudo que n&oacute;s faremos &eacute;
+  come&ccedil;ar com o b&aacute;sico e ir aprendendo as principais fun&ccedil;&otilde;es
+  do B3D antes de tentarmos t&oacute;picos mais avan&ccedil;ados. <br>
+  <br>
+  Se voc&ecirc; tem alguma experi&ecirc;ncia de programa&ccedil;&atilde;o em Blitz
+  Basic (ou qualquer linguagem Basic) isso facilitar&aacute; as coisas. Vamos
+  dar uma olhada nos conceitos 3D... <br>
+  <br>
+  Como em outras linguagens Basic voc&ecirc; tem um conjunto de coordenadas, X
+  (Esquerda &amp; Direita) e Y (Cima e Baixo). Com 3D n&oacute;s temos uma coordenada
+  extra para considerar &quot;Z&quot;, Isto nos d&aacute; profundidade na tela.
+  Por exemplo se n&oacute;s lan&ccedil;amos uma pedra, o que estaria acontecendo
+  &eacute;: <br>
+  <br>
+  Ao sair de nossa m&atilde;o, a pedra, primeiramente, se afasta de n&oacute;s
+  ao mesmo tempo que ganha altura. O que acontece aqui &eacute; que a coordenada
+  de Z est&aacute; aumentando fazendo a pedra se afastar, enquanto a coordenada
+  Y faz ela ganhar altura. Em um certo instante Y ter&aacute; seu valor invertido,
+  fazendo a pedra cair. <br>
+  <br>
+  &Eacute; importante tentar visualizar estas 3 coordenadas pois, como veremos,
+  um mundo 3D &eacute; completamente baseado nelas. <br>
+  <br>
+  Vamos olhar algumas das partes principais do Blitz3D antes de come&ccedil;&aacute;rmos
+  a digitar algum c&oacute;digo.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="entities_br.html"><font face="Arial" color="#FFFFFF">Entidades</font></a></b></font></td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana"> Os alicerces de todos os programas em Blitz3D.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="cameras_br.html"><font face="Arial" color="#FFFFFF">C&acirc;meras</font></a></b></font></td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana"> Bem, n&oacute;s precisamos de ver o que est&aacute;
+  acontecendo!</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="planes_br.html"><font face="Arial" color="#FFFFFF">Planos</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">C&eacute;u e oceano at&eacute; onde a vista alcan&ccedil;a.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="meshes_br.html"><font face="Arial" color="#FFFFFF">Malhas</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Talvez voc&ecirc; gostaria de fazer seus pr&oacute;prios
+  objetos do nada.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="terrains_br.html"><font face="Arial" color="#FFFFFF">Terrenos</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Colinas rolantes e Paisagens, em um piscar de
+  olhos.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="texturing_br.html"><font face="Arial" color="#FFFFFF">Texturas</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Por que ter um objeto liso quando voc&ecirc;
+  poder lhe dar diferentes apar&ecirc;ncias?</font></p>
+<hr>
+<p><font size="2" face="Verdana"> Deu uma lida em todas estas informa&ccedil;&otilde;es?
+  Eu espero que sim... Vamos nos aprofundar e come&ccedil;ar a produzir nosso
+  primeiro programa em B3D. <br>
+  Meu objetivo &eacute; lhe mostrar, passo-a-passo, o b&aacute;sico. Voc&ecirc;
+  pode executar o c&oacute;digo fonte de cada cap&iacute;tulo e ver o que acontece.</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;<font color="#FFFFFF">Os
+  Tutoriais</font>&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">Os arquivos necess&aacute;rios para rodar os
+  exemplos podem ser baixados em cada cap&iacute;tulo. &Eacute; recomend&aacute;vel
+  que voc&ecirc; execute o c&oacute;digo e veja o que acontece. Mantenha o Blitz
+  aberto enquanto voc&ecirc; l&ecirc; os tutoriais, assim voc&ecirc; pode fazer
+  experimenta&ccedil;&otilde;es diretamente no c&oacute;digo.&nbsp;</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page1_br.html"><font face="Arial" color="#FFFFFF">Prepara&ccedil;&atilde;o</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Tudo o que voc&ecirc; precisa saber sobre escrever
+  um programa em B3D.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page2_br.html"><font face="Arial" color="#FFFFFF">Movimento
+      e Rota&ccedil;&atilde;o</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Hora de exibir uma forma na tela e come&ccedil;ar
+  a fazer alguns movimentos.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page3_br.html"><font face="Arial" color="#FFFFFF">Movimento
+      de C&acirc;mera</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">H&aacute; mais no B3D que apenas uma c&acirc;mera
+  est&aacute;tica.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page4_br.html"><font face="Arial" color="#FFFFFF">Anima&ccedil;&atilde;o
+      </font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Hora de fazer nossos objetos ganharem vida.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page5_br.html"><font face="Arial" color="#FFFFFF">Texturas</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Vamos deixar os objetos mais realistas, dando-lhes
+  diferentes texturas.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page6_br.html"><font face="Arial" color="#FFFFFF">Ilumina&ccedil;&atilde;o</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">B3D suporta 3 tipos principais de luzes. Vamos
+  ver como cada uma funciona.</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page7_br.html"><font face="Arial" color="#FFFFFF">Colis&otilde;es</font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">Ent&atilde;o o que acontece quando dois mundos
+  se colidem?</font></p>
+<table border="0" width="100%" bgcolor="#6098C8">
+  <tr>
+    <td width="100%"><font size="2"><b><a href="page8_br.html"><font face="Arial" color="#FFFFFF">V&eacute;rtices
+      </font></a></b></font></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana">O que acontece quando voc&ecirc; estica seu objeto,
+  e depois o faz em peda&ccedil;os?</font></p>
+<p>
+  <center>
+  </center>
+</p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Escrito por Paul Gerfen<br>
+    Copyright (c) 2001 GameCodingUK</font>
+</center></p></body></html>

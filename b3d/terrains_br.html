@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a Terrenos</title>
+</head>
+<body>
+<center>
+  <h1><font size="4" face="Verdana">Introdu&ccedil;&atilde;o a Terrenos</font></h1>
+</center>
+<p><font size="2" face="Verdana">Entidades de terreno s&atilde;o usadas para criar 
+  paisagens muito grandes feitas de muitos, muitos tri&acirc;ngulos - at&eacute; 
+  mesmo um milh&atilde;o ou mais! <br>
+  <br>
+  De fato, desenhar estes muitos tri&acirc;ngulos seria um processo muito lento, 
+  assim terrenos usam uma t&eacute;cnica conhecida como 'n&iacute;vel din&acirc;mico 
+  de detalhe' (LOD) para acelerar as coisas. <br>
+  <br>
+  Isto significa basicamente que em vez de desenhar todos os tri&acirc;ngulos 
+  em um terreno, um n&uacute;mero menor de tri&acirc;ngulos &eacute; usado para 
+  fazer uma aproxima&ccedil;&atilde;o do terreno. <br>
+  <br>
+  Terrenos t&ecirc;m alguns limita&ccedil;&otilde;es: </font></p>
+<ul>
+  <li><font size="2" face="Verdana">O v&eacute;rtices de um terreno s&atilde;o 
+    dispostos em um uma rede, com o mesmo n&uacute;mero de v&eacute;rtices ao 
+    longo de cada extremidade. </font></li>
+  <li><font size="2" face="Verdana">S&oacute; a altura de um v&eacute;rtice pode 
+    ser modificada. </font></li>
+  <li><font size="2" face="Verdana">O tamanho de um terreno deve ser um m&uacute;ltiplo 
+    de 2, ex: 2,4,8,16,32...</font></li>
+</ul>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Criando 
+  Terrenos&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana">Voc&ecirc; pode criar terrenos carregando uma 
+  imagem (heightmap), ou criando um terreno 'liso' e definindo voc&ecirc; mesmo 
+  a altura de cada v&eacute;rtice. <br>
+  <br>
+  Uma imagem de heightmap simplesmente &eacute; uma imagem em preto-e-branco onde 
+  pixels mais escuros representam pontos mais baixos, e pixels mais claros representam 
+  pontos mais altos. Uma imagem de heightmap deve ser de um tamanho de terreno 
+  v&aacute;lido - 2x2,4x4,...,256x256,... <br>
+  <br>
+  Quando um terreno &eacute; criado, sua largura e profundidade s&atilde;o igual 
+  ao tamanho do terreno, e sua altura &eacute; 1. Por exemplo, se voc&ecirc; cria 
+  um terreno usando:<br>
+  <br>
+  <b>terrain=CreateTerrain( 32 )</b><br>
+  <br>
+  O terreno estender&aacute; de 0 a 32 ao longo dos eixos x e z, e de 0 a 1 ao 
+  longo do eixo y. <br>
+  <br>
+  Por&eacute;m, voc&ecirc; &eacute; livre para posicionar e escalar o terreno 
+  como voc&ecirc; quiser, usando os comandos de manipula&ccedil;&atilde;o de entidades 
+  como ScaleEntity, PositionEntity. Por exemplo:</font> </p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      <font face="Arial"> &nbsp;&nbsp;&nbsp;&nbsp;;o terreno &eacute; 32 x 1 x 
+      32<b><br>
+      &nbsp;&nbsp;&nbsp; terrain=CreateTerrain( 32 )<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; </b>;o terreno &eacute; agora 320 x 100 x 320<br>
+      &nbsp;&nbsp;&nbsp; <b>ScaleEntity terrain,10,100,10<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; </b>;e centralizado (nos eixos x/z) em 0,0,0<br>
+      &nbsp;&nbsp;&nbsp; <b>PositionEntity terrain,-160,0,-160</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;N&iacute;vel 
+  de Detalhes&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana">Voc&ecirc; pode controlar diretamente quantos 
+  tri&acirc;ngulos s&atilde;o usados para montar um terreno usando o comando de 
+  TerrainDetail. <br>
+  <br>
+  Usando menos tri&acirc;ngulos resultar&atilde;o, naturalmente, em velocidade 
+  melhor, mas note que abaixo de um certo n&uacute;mero seu terreno come&ccedil;ar&aacute; 
+  a se comportar muito estranhamente! <br>
+  <br>
+  Por exemplo, se voc&ecirc; pedir para o Blitz3D que fa&ccedil;a um terreno de 
+  1,000,000 de tri&acirc;ngulos usando apenas 100 tri&acirc;ngulos, &eacute; bem 
+  provav&eacute;l que ele n&atilde;o consiga fazer um trabalho decente. <br>
+  <br>
+  Isto normalmente conduz a um fen&ocirc;meno conhecido como 'estouro', onde v&eacute;rtices 
+  mudam de posi&ccedil;&atilde;o subtamente quando a camera se movimenta. <br>
+  <br>
+  Assim qual n&uacute;mero de tri&acirc;ngulos deveria ser usado? Bem, isto definitivamente 
+  &eacute; uma quest&atilde;o de 'tentativa e erro' e depende de v&aacute;rios 
+  fatores:</font></p>
+<ul>
+  <li><font size="2" face="Verdana">A varia&ccedil;&atilde;o no terreno - Ex: 
+    a quantidade de montanhas e buracos.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"> A escala do terreno - Ex: quanto dele &eacute; 
+    vis&iacute;vel &agrave; c&acirc;mera.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"> O alcance da c&acirc;mera.</font></li>
+</ul>
+<p><font size="2" face="Verdana">Voc&ecirc; pode reduzir o n&uacute;mero de tri&acirc;ngulos 
+  necess&aacute;rios para representar um terreno usando os truques seguintes:</font></p>
+<ul>
+  <li><font size="2" face="Verdana"> 'Embace' ou alise o terreno. Por exemplo, 
+    se voc&ecirc; estiver usando uma imagem de heightmap, apenas aplique um filtro 
+    'blur' ou equivalente &agrave; imagem.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"> Aumente a escala do terreno assim menos dele 
+    &eacute; vis&iacute;vel &agrave; c&acirc;mera.<br>
+    </font></li>
+  <li><font size="2" face="Verdana"> Diminua o alcance da c&acirc;mera.</font></li>
+</ul>
+<p><font size="2" face="Verdana"> Gerar um terreno perfeito com m&iacute;nimo 
+  de estouro &eacute; tanto uma arte como uma ci&ecirc;ncia. <br>
+  <br>
+  O Blitz3D tamb&eacute;m prov&ecirc; uma t&eacute;cnica chamada 'vertex morphing' 
+  para ajudar reduzir os estouros. O vertex morphing automaticamente alisa um 
+  pouco o terreno, reduzindo os estouros. O comando TerrainDetail tamb&eacute;m 
+  &eacute; usado para habilitar o vertex morphing.</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Modificando 
+  o Terreno&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana">O comando ModifyTerrain &eacute; usado mudar 
+  a altura de um v&eacute;rtice do terreno, por exemplo:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;cria um terreno tamanho 32.</font><br>
+      &nbsp;&nbsp;&nbsp; <font face="Arial"><b>terrain=CreateTerrain( 32 )&nbsp;</b></font></font> 
+      <p><font size="2" face="Arial">&nbsp;&nbsp; ;puxa o v&eacute;rtice central 
+        50% para cima.<br>
+        &nbsp;&nbsp; <b>ModifyTerrain terrain,16,16,.5</b></font><font size="2"><br>
+        <br>
+        </font></p></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana">Os par&acirc;metros usados com o ModifyTerrain 
+  devem ser dados em 'coordenadas de terreno'. Isto significa que os valores x 
+  e z sempre devem ser de 0 ao tamanho do terreno, e o valor de altura sempre 
+  deveria ser de 0 a 1. Esse comando ignora qualquer escala, posi&ccedil;&atilde;o 
+  ou rota&ccedil;&atilde;o aplicadas ao terreno.</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Texturizando 
+  Terrenos&nbsp;</span></font></h2>
+<p><font size="2" face="Verdana">Por padr&atilde;o o terreno que voc&ecirc; cria 
+  ser&aacute; apenas de uma cor, sem texturas, mas usando o comando EntityTexture 
+  &eacute; poss&iacute;vel aplicar uma textura &agrave; paisagem inteira. Infelizmente 
+  n&atilde;o &eacute; poss&iacute;vel aplicar diferentes texturas em diferentes 
+  partes do mesmo terreno. Mas n&atilde;o se preocupe! Se lembre que uma entidade 
+  pode ter 8 textures aplicados a ela. Construindo estas texturas cuidadosamente 
+  &eacute; poss&iacute;vel ter diferentes texturas atuando em diferentes partes 
+  do terreno.</font></p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen 
+    - GamecodingUK</font>
+  </center>
+</p>
+</body>
+</html>

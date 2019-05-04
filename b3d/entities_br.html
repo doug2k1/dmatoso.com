@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a Entidades</title>
+</head>
+<body>
+<center>
+  <h1><font size="4" face="Verdana">Introdu&ccedil;&atilde;o a Entidades</font></h1>
+</center>
+<p> <font size="2" face="Verdana"> Tudo em um programa de Blitz3D acontece dentro 
+  de um mundo 3D, que &eacute; povoado por 'entidades'. <br>
+  <br>
+  Entidades s&atilde;o de v&aacute;rios tipos, e cada uma executando uma certa 
+  tarefa, mas todas as entidades t&ecirc;m algumas coisas em comum. As mais importantes 
+  s&atilde;o: <br>
+  <br>
+  Todas as entidades t&ecirc;m uma posi&ccedil;&atilde;o, uma rota&ccedil;&atilde;o 
+  e um tamanho, e podem ser movidas, giradas e redimensionadas &agrave; vontade. 
+  <br>
+  <br>
+  Todas as entidades podem ter uma entidade 'pai'. Se uma entidade tiver um pai, 
+  ent&atilde;o ela se torna 'ligada' ao pai e mover&aacute;, girar&aacute; e escalar&aacute; 
+  sempre que o pai o fizer. <br>
+  <br>
+  Agora, vamos dar uma olhada nos tipos de entidades que podem ser usadas no mundo 
+  3D:</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;C&acirc;meras&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> C&acirc;meras permitem 'ver' o que est&aacute; 
+  acontecendo no mundo. Se voc&ecirc; n&atilde;o criar pelo menos uma c&acirc;mera, 
+  voc&ecirc; n&atilde;o conseguir&aacute; ver nada! C&acirc;meras tamb&eacute;m 
+  controlam onde, na tela, a renderiza&ccedil;&atilde;o ocorre, e prov&ecirc; 
+  efeitos de n&eacute;voa atmosf&eacute;ricos.</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font size="4" face="Verdana">&nbsp;Luzes</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p> <font size="2" face="Verdana"> Luzes prov&ecirc;em ilumina&ccedil;&atilde;o 
+  para o mundo 3D. Sem qualquer luz, voc&ecirc; ainda conseguir&aacute; ver o 
+  que est&aacute; acontecendo gra&ccedil;as &agrave; 'luz ambiente'. Luz ambiente 
+  &eacute; uma luz que est&aacute; em todos os lugares e ilumina tudo igualmente. 
+  Por&eacute;m, uma vez que luz ambiente n&atilde;o tem posi&ccedil;&atilde;o 
+  ou dire&ccedil;&atilde;o, voc&ecirc; n&atilde;o conseguir&aacute; bons efeitos 
+  de sombra, e tudo parecer&aacute; muito liso.</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font size="4" face="Verdana">&nbsp;Malhas</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p> <font size="2" face="Verdana"> Malhas prov&ecirc;em um modo para acrescentar 
+  &iacute;tens f&iacute;sicos ao mundo. Malhas s&atilde;o compostas de tri&acirc;ngulos, 
+  e cada tri&acirc;ngulo pode ser colorido ou texturizado em uma variedade de 
+  modos. O modo mais comum de acrescentar uma malha ao mundo &eacute; carreg&aacute;-la 
+  de um arquivo produzido por um programa de modelagem 3D, mas voc&ecirc; tamb&eacute;m 
+  pode criar suas malhas no pr&oacute;prio Blitz3D.</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font><font size="4" face="Verdana">Piv&ocirc;s</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p> <font size="2" face="Verdana"> Piv&ocirc;s n&atilde;o fazem de fato muito! 
+  O prop&oacute;sito principal deles &eacute; prover um 'pai' para outras entidades. 
+  Isto pode ser &uacute;til por muitas raz&otilde;es. Por exemplo, ligando um 
+  grupo de malhas a um piv&ocirc;, voc&ecirc; pode mover todas as malhas de uma 
+  vez apenas movendo o piv&ocirc;!</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font><font size="4" face="Verdana">Sprites</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p> <font size="2" face="Verdana"> Sprites s&atilde;o entidades 2D, comumente 
+  usadas em efeitos de part&iacute;culas, como explos&otilde;es, fuma&ccedil;a 
+  e fogo. Sprites automaticamente se direcionam para a c&acirc;mera, independente 
+  do &acirc;ngulo que voc&ecirc; os v&ecirc;.</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font><font size="4" face="Verdana">Planos</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p><font size="2" face="Verdana">Planos s&atilde;o superf&iacute;cies infinitamente 
+  grandes, planas que podem ser usadas para uma variedade de efeitos como ch&atilde;o 
+  e &aacute;gua. Considerando que planos s&atilde;o entidades, eles tamb&eacute;m 
+  podem ser movidos e girados, o que significa que voc&ecirc; tamb&eacute;m pode 
+  os usar para c&eacute;u e efeitos de nuvem.</font></p>
+<h2><font size="2"><span style="background-color: #6097C9"><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font><font size="4" face="Verdana">Terrenos</font><font color="#FFFFFF" size="4" face="Verdana">&nbsp;</font></span></font></h2>
+<p> <font size="2" face="Verdana"> S&atilde;o usadas entidades de terreno para 
+  criar paisagens muito grandes. Eles s&atilde;o constru&iacute;dos de uma rede 
+  de tri&acirc;ngulos, e s&atilde;o renderizados usando uma t&eacute;cnica que 
+  tra&ccedil;a uma aproxima&ccedil;&atilde;o do terreno usando um n&uacute;mero 
+  limitado de tri&acirc;ngulos. Isto &eacute; necess&aacute;rio para terrenos 
+  muito grandes que podem conter milh&otilde;es de tri&acirc;ngulos - que n&atilde;o 
+  s&oacute; seria muito lento, mas tamb&eacute;m ocuparia muita mem&oacute;ria!</font></p>
+<p>&nbsp;</p>
+<p> <font size="2" face="Verdana"> Estas entidades formam a 'coluna vertebral' 
+  de qualquer programa B3D. Realmente vale a pena passar um tempo conhecendo as 
+  v&aacute;rias instru&ccedil;&otilde;es associadas a elas. Como veremos, usando 
+  diferentes par&acirc;metros e os comandos especiais por controlar ou alterar 
+  o comprtamento delas, n&oacute;s podemos adaptar uma entidade &agrave; nossa 
+  prefer&ecirc;ncia. At&eacute; mesmo se isso significa definir um efeito especial 
+  que o Blitz3D, com seu conjunto de comandos atuais n&atilde;o pode fazer!</font> 
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen 
+    - GamecodingUK</font>
+  </center>
+</p>
+</body>
+</html>

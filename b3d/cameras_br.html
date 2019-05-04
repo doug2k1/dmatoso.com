@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a C&acirc;meras</title>
+</head>
+<body>
+
+<center>
+  <h1><font size="4" face="Verdana, Arial, Helvetica, sans-serif">Introdu&ccedil;&atilde;o a C&acirc;meras</font></h1>
+</center>
+
+<p> <font size="2" face="Verdana"> C&acirc;meras lhe permitem ver o que est&aacute;
+  acontecendo no mundo 3D. Sem pelo menos uma c&acirc;mera, nada ser&aacute; mostrado
+  na tela. <br>
+  C&acirc;meras tamb&eacute;m controlam v&aacute;rios outros efeitos, inclusive
+  dist&acirc;ncia de renderiza&ccedil;&atilde;o, zoom e n&eacute;voa</font><font size="2" face="Verdana">.</font></p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Criando
+  C&acirc;meras&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Para criar uma c&acirc;mera, simplesmente use o comando
+  <b>CreateCamera</b>:</font> </p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0">&nbsp;<br>
+      <font size="2">&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;Cria uma nova
+      c&acirc;mera!<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>camera=CreateCamera()</b></font></font><br>
+      <br>
+
+    </td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+
+<h2><font size="2" face="Verdana"><span style="background-color: #6097C9"><font size="4">&nbsp;&Aacute;rea
+  Vis&iacute;vel&nbsp; </font> </span></font></h2>
+<p> <font size="2" face="Verdana"> Uma c&acirc;mera precisa saber em que parte
+  da tela ser&aacute; mostrada sua imagem. Esta &aacute;rea da tela &eacute; conhecida
+  como &aacute;rea vis&iacute;vel da c&acirc;mera. Por padr&atilde;o, a &aacute;rea
+  vis&iacute;vel de uma c&acirc;mera &eacute; a tela inteira. </font></p>
+<p><font size="2" face="Verdana">Para mudar a &aacute;rea vis&iacute;vel de uma
+  c&acirc;mera use o comando<b> CameraViewport</b>:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;A &aacute;rea vis&iacute;vel
+      aqui &eacute; 1/4 da tela, no canto superior esquerdo<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraViewport camera,0,0,GraphicsWidth()/2,GraphicsHeight()/2</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Alcance
+  da c&acirc;mera&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Essa fun&ccedil;&atilde;o determina a que dist&acirc;ncia
+  da c&acirc;mera os objetos ser&atilde;o renderizados. Voc&ecirc; especifica
+  2 valores para o alcance da c&acirc;mera - um valor m&iacute;nimo e um valor
+  m&aacute;ximo. Toda a renderiza&ccedil;&atilde;o &eacute; limitada a esse intervalo.
+  </font></p>
+<p><font size="2" face="Verdana"> &Eacute; uma boa id&eacute;ia tentar manter
+  esse intervalo o menor poss&iacute;vel. Isto ajuda a aumentar o desempenho pelo
+  fato de que menos tri&acirc;ngulos ser&atilde;o mostrados na tela. Por padr&atilde;o,
+  o valor m&iacute;nimo &eacute; 1, e o valor m&aacute;ximo &eacute; 1000. </font></p>
+<p><font size="2" face="Verdana">Para alterar o alcance da c&acirc;mera, use o
+  comando<b> CameraRange</b>:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;Define o valor m&iacute;nimo
+      como 5 e o m&aacute;ximo como 5000<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraRange camera,5,5000</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Zoom&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Mudando um zoom de uma c&acirc;mera permite
+  aproximar ou afastar a imagem, sem tirar a c&acirc;mera do lugar. O valor padr&atilde;o
+  de zoom &eacute; 1. Valores maiores que 1 fazem um efeito de aproxima&ccedil;&atilde;o,
+  enquanto valores menores fazem o afastamento. O zoom nunca deve ser 0 ou menos!</font></p>
+<p> <font size="2" face="Verdana"> O comando <b>CameraZoom</b> controla o zoom
+  de uma c&acirc;mera:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;Um pouco de aproxima&ccedil;&atilde;o<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraZoom camera,1.5</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Efeitos
+  de n&eacute;voa&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Blitz3D permite efeitos n&eacute;voa independentes
+  para cada c&acirc;mera. Isto pode ser &uacute;til para limitar o que uma certa
+  c&acirc;mera pode ver. Por exemplo, um jogo de corrida poderia usar uma c&acirc;mera
+  para seu espelho retrovisor. Por&eacute;m, voc&ecirc; poderia querer limitar
+  o que &eacute; vis&iacute;vel no espelho retrovisor para manter o jogo rodando
+  mais r&aacute;pido. </font></p>
+<p><font size="2" face="Verdana">Para definir um efeito de n&eacute;voa simples
+  para uma c&acirc;mera, voc&ecirc; poderia usar algo assim:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;<font face="Arial">;Define a cor da n&eacute;voa<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraFogColor camera,0,128,255</b><br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;;Define valores m&iacute;nimo e m&aacute;ximo para
+      a n&eacute;voa<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraFogRange camera,1,1000</b><br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;;Habilita a n&eacute;voa<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>CameraFogMode camera,1</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana"> Normalmente, o valor m&aacute;ximo da n&eacute;voa
+  e o alcance da c&acirc;mera ser&atilde;o o mesmo. Por&eacute;m, aumentando o
+  valor m&iacute;nimo, voc&ecirc; pode controlar o quanto densa a n&eacute;voa
+  parece ser. Valores m&iacute;nimos baixos resultar&atilde;o em um efeito de
+  n&eacute;voa mais densa, uma vez que a n&eacute;voa come&ccedil;ar&aacute; mais
+  pr&oacute;ximo &agrave; c&acirc;mera. </font></p>
+<p><font size="2" face="Verdana">Infelizmente, efeitos de n&eacute;voa n&atilde;o
+  s&atilde;o bem suportados em todos as placas de v&iacute;deo. Apesar de todas
+  as placas suportarem algum tipo de efeito de n&eacute;voa, a qualidade varia
+  muito. Por isto, &eacute; uma id&eacute;ia boa fazer a n&eacute;voa ser opcional
+  em seus jogos de Blitz3D.</font></p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen
+    - GamecodingUK</font>
+</center></p>
+</body>
+</html>

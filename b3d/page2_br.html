@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>2. Movimento e Rota&ccedil;&atilde;o</title>
+</head>
+
+<body>
+<font face="verdana">
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="2">&nbsp;<font size="4">2.
+        Movimento e Rota&ccedil;&atilde;o</font></font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Mover um objeto no
+        espa&ccedil;o 3D<br>
+        &nbsp;<b>N&iacute;vel</b>: Iniciante<br>
+        <b>&nbsp;Arquivos:</b> <a href="movement.bb">movement.bb</a> / <a href="rocket.3ds">rocket.3ds</a></font> 
+      </font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"> <p align="center"><font size="2" face="verdana"> <img src="2c.jpg" alt="Movement" width="167" height="127" align="right">
+        </font> </p></td>
+  </tr>
+</table>
+<p><font size="2"> Vamos come&ccedil;ar a fazer coisas se moverem! Neste tutorial
+  n&oacute;s estaremos carregando um objeto que eu fiz em 3D Studio. Garanto que
+  ele n&atilde;o &eacute; maravilhoso e se parece mais com uma vela que um foguete,
+  mas ir&aacute; servir. <br>
+  <br>
+  Vamos dar uma olhada no c&oacute;digo-fonte. Sinta-se livre para rod&aacute;-lo!
+  <br>
+  <br>
+  <b>NOTA:</b> Voc&ecirc; precisar&aacute; ter o objeto ROCKET.3DS no mesmo diret&oacute;rio 
+  do arquivo fonte para o Blitz encontr&aacute;-lo. <br>
+  <br>
+  Voc&ecirc; pode mover o foguete com a seta PARA CIMA, e gir&aacute;-lo com ESQUERDA
+  e DIREITA</font><font size="2">.</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp; <font face="arial">Graphics3D 800,600<br>
+      <br>
+      &nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp; camera=CreateCamera()<br>
+      &nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp; light=CreateLight()<br>
+      <br>
+      &nbsp; rocket=LoadMesh( &quot;rocket.3ds&quot; )<br>
+      &nbsp; PositionEntity rocket,0,0,7<br>
+      <br>
+      &nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If KeyDown(200) Then<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MoveEntity rocket,0,0.05,0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If KeyDown(203) Then<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TurnEntity rocket,0,0,1.0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If KeyDown(205) Then<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TurnEntity rocket,0,0,-1.0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp; UpdateWorld<br>
+      &nbsp; RenderWorld<br>
+      <br>
+      &nbsp; Text 320,500,&quot;Movimento e Rota&ccedil;&atilde;o&quot;<br>
+      <br>
+      &nbsp; Flip<br>
+      <br>
+      &nbsp; Wend<br>
+      &nbsp; End<br>
+      <br>
+      </font></font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2"> Eu n&atilde;o explicarei todas as linhas de c&oacute;digo,
+  s&oacute; os comandos novos que n&oacute;s ainda n&atilde;o usamos. O primeiro
+  &eacute;:</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%">
+
+<font size="2"><b><font face="Arial">rocket=LoadMesh(&quot;rocket.3ds&quot;)</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Como voc&ecirc; provavelmente pode adivinhar, esta linha de
+  c&oacute;digo carregar&aacute; um modelo 3D chamado ROCKET.3DS em uma vari&aacute;vel
+  chamada 'rocket'. <br>
+  <br>
+  O que &eacute; essa vari&aacute;vel? &Eacute; exatamente o mesmo tipo de r&oacute;tulo
+  que n&oacute;s usamos em Blitz para inicializar sprites. (Ele guarda o endere&ccedil;o
+  de mem&oacute;ria onde os dados s&atilde;o armazenados) Neste caso ela aponta
+  para o local onde o modelo &eacute; armazenado.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%">
+
+<font size="2"><b><font face="Arial">If KeyDown(200)	Then<br>
+MoveEntity rocket,0,0.05,0<br>
+EndIf</font></b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Estas 3 linhas nos falam que se voc&ecirc; est&aacute; apertando
+  PARA CIMA, o objeto 'ROCKET' se move no eixo Y 0.05 unidades acima. <br>
+  <br>
+  Vamos dar uma olhada mais profunda nisso. Se lembre que meu foguete est&aacute;
+  apontando para cima - assim para come&ccedil;ar eu quero que meu foguete viaje
+  para cima - por isso eu estou aumentando a coordenada Y. (se lembre que em 3D
+  um Y positivo quer dizer para cima - n&atilde;o abaixo como em sistemas de coordenada
+  normais, como coordenadas de sprites no Blitz2D) <br>
+  <br>
+  Se meu foguete fosse um carro que foi projetado para estar voltado para a direita,
+  ent&atilde;o eu quereria que meu carro viajasse &agrave; direita da tela - assim
+  eu estaria aumentando a coordenada X. &Eacute; muito importante observar isso
+  no come&ccedil;o de seu programa, ou seu objeto poderia come&ccedil;ar se movendo
+  para a dire&ccedil;&atilde;o errada</font><font size="2">.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%">
+
+<p>
+<font size="2"><b><font face="Arial">If KeyDown(203)	Then<br>
+TurnEntity rocket,0,0,1.0<br>
+EndIf</font></b></font></p>
+<p>
+<font size="2"><b><font face="Arial">If KeyDown(205)	Then<br>
+TurnEntity rocket,0,0,-1.0<br>
+EndIf</font></b></font></p>
+    </td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Deveria ser bastante &oacute;bvio a voc&ecirc; que estas linhas
+  controlam a rota&ccedil;&atilde;o de nosso foguete. Se voc&ecirc; aperta a seta
+  ESQUERDA - gira o foguete 1.0 unidade (no sentido hor&aacute;rio), ao passo
+  que apertando a seta DIREITA resulta em girar -1.0 (anti-hor&aacute;rio). <br>
+  <br>
+  Assim como o objeto ainda move para frente embora n&oacute;s j&aacute; n&atilde;o
+  estejamos apontando para cima? .. bem.. voc&ecirc; tem que agradecer Mr Sibly
+  por nos dar o comando TurnEntity! Perceba que quando giramos o objeto, o eixo
+  move junto. Se n&oacute;s girarmos o objeto 90 graus, o eixo de Y est&aacute;
+  apontando agora onde o eixo de X deveria estar. N&atilde;o preocupe em 'por
+  que' ou 'como'.. s&oacute; seja grato voc&ecirc; n&atilde;o tem que trabalhar
+  com s&oacute;rdidos c&aacute;lculos para fazer isto. <br>
+  <br>
+  Caso voc&ecirc; esteja desejando saber, voc&ecirc; pode girar o objeto sem que
+  o eixo se mova usando o comando RotateEntity. Isto seria usado principalmente
+  para coloca&ccedil;&atilde;o de objetos em seu mundo - por exemplo, se eu projetasse
+  o foguete em seu lado. Eu o giraria primeiramente at&eacute; ele estar voltado
+  para cima com o comando RotateEntity - ent&atilde;o eu poderia usar o TurnEntity
+  para mov&ecirc;-lo. <br>
+  <br>
+  O &uacute;nico modo de entender totalmente este comando, (que provavelmente
+  ser&aacute; seu comando mais usado) &eacute; experimentar. Tente fazer o foguete
+  girar em outras dire&ccedil;&otilde;es!! <br>
+  <br>
+  Se lembre que este &eacute; o formato que voc&ecirc; usa</font><font size="2">:</font></p>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial, Helvetica, sans-serif"> TurnEntity
+      [objeto],[quantidade a girar no eixo X],[quantidade a girar no eixo Y],[quantidade
+      a girar no eixo Z] </font> </td>
+  </tr>
+</table>
+<p><font size="2"><b>NOTA:</b> O Blitz3D tamb&eacute;m cont&eacute;m um comando 
+  para escalar um objeto, (veja o manual para mais onforma&ccedil;&otilde;es sobre 
+  o comando ScaleEntity) - se, por exemplo, n&oacute;s projet&aacute;ssemos o 
+  objeto muito pequeno n&oacute;s poder&iacute;amos aument&aacute;-lo em tempo 
+  real, ou encolh&ecirc;-lo se estivesse muito grande. Se voc&ecirc; escolher 
+  usar uma multid&atilde;o de diferentes programas 3D para projetar seus objetos, 
+  ent&atilde;o voc&ecirc; precisar&aacute; usar muito este comando. O 3D Studio 
+  por exemplo, gosta de escalar seu objeto maior que outros programas.</font></p>
+<center>
+  <font color="#808080" size="2">Tutorial 3 - <a href="page3_br.html">Movimento de
+  C&acirc;mera</a></font>
+</center>
+</font></body></html>

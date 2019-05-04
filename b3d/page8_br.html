@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>8. V&eacute;rtices</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="61%" bgcolor="#6097C9"><font face="verdana">
+      <h1 align="left"><font color="#FFFFFF" size="4">&nbsp;8. V&eacute;rtices</font></h1>
+      <p align="left"><font size="2"><b>&nbsp;Objetivo</b>: Editar v&eacute;rtices
+        de uma malha em tempo-real<br>
+        &nbsp;<b>N&iacute;vel</b>: Intermedi&aacute;rio<br>
+        &nbsp;<b>Arquivos</b>: <a href="vertex.bb">vertex.bb</a> / <a href="plane.3ds">plane.3ds</a></font></font></td>
+    <td width="5%">&nbsp;</td>
+    <td width="34%"> <p align="center"><font size="2" face="verdana"> <img src="10c.jpg" alt="Movement" width="167" height="127" align="right">
+        </font> </p></td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> Se voc&ecirc;
+  j&aacute; leu anteriormente a se&ccedil;&atilde;o sobre malhas ent&atilde;o
+  voc&ecirc; j&aacute; saber&aacute; muito do que faremos neste tutorial. Se n&atilde;o
+  leu, saia daqui e v&aacute; ler! <br>
+  <br>
+  Vamos recapitular: <br>
+  <br>
+  Cada <b>MALHA</b> (um objeto 3D), &eacute; composto de SUPERF&Iacute;CIES. <br>
+  <br>
+  Cada SUPERF&Iacute;CIE tem um BRUSH. <br>
+  <br>
+  A cada <b>BRUSH</b> pode ser atribu&iacute;das 8 texturas diferentes. <br>
+  (que podem ser sobrepostas para criar novos efeitos) <br>
+  <br>
+  Cada <b>SUPERF&Iacute;CIE</b> &eacute; composta de TRI&Acirc;NGULOS. <br>
+  <br>
+  Cada <b>TRI&Acirc;NGULO</b> &eacute; composto de 3 V&Eacute;RTICES.</font></p>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Assim, armado com
+  essa informa&ccedil;&atilde;o voc&ecirc; j&aacute; deve saber como &eacute;
+  composto um objeto 3D. Vamos pegar um quadrado plano como exemplo. Ele &eacute;
+  composto de 4 v&eacute;rtices e 2 tri&acirc;ngulos. O que n&oacute;s estamos
+  planejando fazer &eacute; pegar 2 desses v&eacute;rtices e mudar suas coordenadas.
+  </font></p>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">De fato, como mencionado
+  em &quot;Introdu&ccedil;&atilde;o a Malhas&quot;, n&oacute;s podemos at&eacute;
+  mesmo mudar a cor dos v&eacute;rtices em tempo-real. Execute o exemplo. O que
+  voc&ecirc; v&ecirc; &eacute; um objeto quadrado (que est&aacute; girando lentamente
+  no eixo Z), sendo deformado em 2 cantos - enquanto os v&eacute;rtices mudam
+  de cor. <br>
+  <br>
+  &Eacute; um efeito muito f&aacute;cil para criar, eu n&atilde;o vou entrar em
+  muitos detalhes sobre como/por que o programa funciona, mas aqui est&aacute;
+  um r&aacute;pido informe se voc&ecirc; estiver interessado: <br>
+  <br>
+  N&oacute;s definimos a vari&aacute;vel 'COUNTER' (contador) que faz exatamente
+  isso... ser usada como um contador. Toda vez que o programa passa pelo loop
+  principal, o valor &eacute; incrementado. O valor do contador corresponde a
+  que dire&ccedil;&atilde;o n&oacute;s dever&iacute;amos puxar os v&eacute;rtices.
+  Se o contador alcan&ccedil;a 1000, ent&atilde;o mudamos a cor de cada v&eacute;rtice
+  para uma sele&ccedil;&atilde;o aleat&oacute;ria, antes de resetar o valor do
+  contador. <br>
+  <br>
+  Demos uma olhada:</font></p>
+<table border="1" width="86%" bordercolor="#FFFFFF">
+  <tr>
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp; <font face="arial">Graphics3D 800,600<br>
+      <br>
+      &nbsp;&nbsp; SetBuffer BackBuffer()<br>
+      <br>
+      &nbsp;&nbsp; camera=CreateCamera()<br>
+      &nbsp;&nbsp; CameraViewport camera,0,0,800,600<br>
+      <br>
+      &nbsp;&nbsp; light=CreateLight()<br>
+      <br>
+      &nbsp;&nbsp; plane=LoadMesh(&quot;plane.3ds&quot;)<br>
+      &nbsp;&nbsp; PositionEntity plane,0,0,25<br>
+      &nbsp;&nbsp; EntityFX plane,2<br>
+      <br>
+      &nbsp;&nbsp; surface=GetSurface(plane,CountSurfaces(plane))<br>
+      <br>
+      &nbsp;&nbsp; VertexColor surface,0,255,0,0<br>
+      &nbsp;&nbsp; VertexColor surface,1,0,255,0<br>
+      &nbsp;&nbsp; VertexColor surface,2,0,0,255<br>
+      &nbsp;&nbsp; VertexColor surface,3,255,0,255<br>
+      <br>
+      &nbsp;&nbsp; While Not KeyHit(1)<br>
+      <br>
+      &nbsp;&nbsp; TurnEntity plane,0,0,.3<br>
+      <br>
+      &nbsp;&nbsp; counter=counter+1<br>
+      <br>
+      &nbsp;&nbsp; If counter&lt;500 Then&nbsp;<br>
+      &nbsp;&nbsp; x1#=-.01<br>
+      &nbsp;&nbsp; y1#=-.01<br>
+      &nbsp;&nbsp; x2#=+.01<br>
+      &nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp;&nbsp; If counter&gt;499 Then<br>
+      &nbsp;&nbsp; x1#=+.01<br>
+      &nbsp;&nbsp; y1#=+.01<br>
+      &nbsp;&nbsp; x2#=-.01<br>
+      &nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp;&nbsp; xx#=VertexX(surface,0)<br>
+      &nbsp;&nbsp; yy#=VertexY(surface,0)<br>
+      &nbsp;&nbsp; zz#=VertexZ(surface,0)<br>
+      <br>
+      &nbsp;&nbsp; VertexCoords surface,0,xx+x1,yy+y1,zz<br>
+      <br>
+      &nbsp;&nbsp; xx#=VertexX(surface,2)<br>
+      &nbsp;&nbsp; yy#=VertexY(surface,2)<br>
+      &nbsp;&nbsp; zz#=VertexZ(surface,2)<br>
+      <br>
+      &nbsp;&nbsp; VertexCoords surface,2,xx+x2,yy+y1,zz<br>
+      <br>
+      &nbsp;&nbsp; If counter=1000 Then<br>
+      &nbsp;&nbsp; counter=0<br>
+      &nbsp;&nbsp; VertexColor surface,0,Rnd#(0,255),Rnd#(0,255),Rnd#(0,255)<br>
+      &nbsp;&nbsp; VertexColor surface,1,Rnd#(0,255),Rnd#(0,255),Rnd#(0,255)<br>
+      &nbsp;&nbsp; VertexColor surface,2,Rnd#(0,255),Rnd#(0,255),Rnd#(0,255)<br>
+      &nbsp;&nbsp; VertexColor surface,3,Rnd#(0,255),Rnd#(0,255),Rnd#(0,255)<br>
+      &nbsp;&nbsp; EndIf<br>
+      <br>
+      &nbsp;&nbsp; UpdateWorld<br>
+      &nbsp;&nbsp; RenderWorld<br>
+      <br>
+      &nbsp;&nbsp; Text 350,500,"Controle de V&eacute;rtices"<br>
+      <br>
+      &nbsp;&nbsp; Flip<br>
+      <br>
+      &nbsp;&nbsp; Wend<br>
+      &nbsp;&nbsp; End<br>
+      <br>
+      </font></font> </td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> Ent&atilde;o como
+  n&oacute;s chegamos aos v&eacute;rtices do objeto? <br>
+  <br>
+  Bem, n&oacute;s carregamos o objeto com o comando LoadMesh, o objeto que n&oacute;s
+  estamos carregando &eacute; chamado Plane.3ds</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">.</font></p>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>EntityFX plane,2</b></font></td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p>Aqui est&aacute; um comando que n&oacute;s n&atilde;o vimos antes! Este comando
+  realmente &eacute; mais um selecionador de efeitos que qualquer outra coisa.
+  Mas definindo valores n&oacute;s podemos ter acesso &agrave; entidade de diferentes
+  modos. O valor '2' serve para habilitar a colora&ccedil;&atilde;o de v&eacute;rtices
+  em toda a entidade, e por padr&atilde;o &eacute; desativado. <br>
+  <br>
+  Estes s&atilde;o os efeitos poss&iacute;veis:</p>
+</font>
+<table border="0" width="100%" bgcolor="#FFFF00">
+  <tr>
+    <td width="100%"> <p><font size="2" face="Arial">0 = Nenhum efeito (padr&atilde;o)<br>
+        </font><font size="2" face="Arial">1 = Ilumina&ccedil;&atilde;o total
+        <br>
+        2 = Usar v&eacute;rtices coloridos <br>
+        4 = &quot;Flatshading&quot;<br>
+        8 = Desativar n&eacute;voa<br>
+        16 = Desativar &quot;backface culling&quot;</font></p>
+      </td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p>H&aacute; outro comando bem parecido com o EntitiyFX chamado BrushFX. Ele usa
+  os mesmos valores, mas em vez de mudar a entidade inteira ele afeta um &uacute;nico
+  brush. (Se lembre que uma malha tem superf&iacute;cies, com brushes aplicados
+  a elas)</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>surface=GetSurface(plane,CountSurfaces(plane))</b></font></td>
+  </tr>
+</table>
+<font face="verdana">
+<p><font size="2"> Para chegar aos v&eacute;rtices n&oacute;s temos primeiro que
+  desbloque&aacute;-los. N&oacute;s fazemos isto criando uma vari&aacute;vel que
+  guarda o endere&ccedil;o de mem&oacute;ria das superf&iacute;cies da malha.
+  <br>
+  <br>
+  Se acalme! N&oacute;s n&atilde;o temos que sujar nossas m&atilde;os com c&aacute;lculos
+  complicados. Ao inv&eacute;s disso n&oacute;s usamos o comando GetSurface, que
+  primeiro pede o nome da malha, e depois a quantidade de superf&iacute;cies que
+  ela tem. Como voc&ecirc; pode ver eu usei o comando CountSurfaces para fazer
+  isto para mim</font><font size="2">.</font></p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>VertexColor surface,0,255,0,0<br>
+      VertexColor surface,1,0,255,0<br>
+      VertexColor surface,2,0,0,255<br>
+      VertexColor surface,3,255,0,255</b></font> </td>
+  </tr>
+</table>
+<font size="2" face="verdana">
+<p>Antes de entrar no loop principal, eu defini a cada v&eacute;rtice com uma
+  cor diferente. Isto nos d&aacute; um efeito de arco-&iacute;ris agrad&aacute;vel!
+  Como voc&ecirc; pode ver n&oacute;s passamos a vari&aacute;vel 'surface' para
+  o comando VertexColor, como tamb&eacute;m o n&uacute;mero do v&eacute;rtice
+  (0-3, uma vez que nosso objeto s&oacute; tem 4 pontos), seguido pelos valores
+  de cor vermelho, verde e azul. (Deve estar entre 0 (Escuro) e 255 (Claro))</p>
+</font>
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>xx#=VertexX(surface,0)<br>
+      yy#=VertexY(surface,0)<br>
+      zz#=VertexZ(surface,0)</b></font> </td>
+  </tr>
+</table>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Como eu quero que as coordenadas
+  da malha mudem todo o tempo, eu n&atilde;o posso fixar isto com um valor que
+  n&atilde;o muda. Em toda atualiza&ccedil;&atilde;o eu tenho que adquirir as
+  coordenadas atuais e ligeiramente as alterar (somando um valor &agrave;s coordenadas
+  X e Y). <br>
+  <br>
+  Eu fa&ccedil;o isto adquirindo os v&eacute;rtices X,Y e Z atuais - usando os
+  v&aacute;rios comandos que retornam as coordenadas dos v&eacute;rtices!</font></p>
+
+<table border="0" width="100%" bgcolor="#6097C9">
+  <tr>
+    <td width="100%"> <font size="2" face="Arial"><b>VertexCoords surface,0,xx+x1,yy+y1,zz</b></font>
+    </td>
+  </tr>
+</table>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> Como voc&ecirc;
+  provavelmente percebeu, esta &eacute; a instru&ccedil;&atilde;o principal para
+  mudar as posi&ccedil;&otilde;es de v&eacute;rtice atuais. Precisa ser chamado
+  com a vari&aacute;vel da superf&iacute;cie, seguido pelos novos valores X, Y
+  e Z. </font></p>
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><br>
+  &Eacute; isso a&iacute;! <br>
+  <br>
+  Mas por que voc&ecirc; iria querer mudar as coordenadas? <br>
+  <br>
+  Todos os jogos alteram seus objetos, &eacute; s&oacute; o caso de descobrir
+  como e onde eles fazem isso. Imagine que voc&ecirc; projetou um simulador de
+  dire&ccedil;&atilde;o. N&atilde;o seria agrad&aacute;vel quando voc&ecirc; chocasse
+  o carro que o dano aparecesse? Talvez amassar a lataria... ou quebrar um vidro.
+  <br>
+  <br>
+  Como certos jogos de carros de sucesso, eles usam exatamente o mesmo m&eacute;todo.
+  Voc&ecirc; tem que implementar isso no B3D - Voc&ecirc; quer isto... est&aacute;
+  l&aacute;, agora v&aacute; e use sabiamente</font><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+  !</font></p>
+<p align="center"><font color="#808080" size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Mais
+  tutoriais a caminho..</b><br>
+  Tutoriais escritos por by Paul Gerfen<br>
+  (c) 2001 GameCodingUK </font> 
+</body>
+</html>

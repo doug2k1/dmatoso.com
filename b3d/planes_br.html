@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Introdu&ccedil;&atilde;o a Planos</title>
+</head>
+
+<body>
+<center>
+  <h1><font size="4" face="Verdana">Introdu&ccedil;&atilde;o a Planos</font></h1>
+</center>
+<p> <font size="2" face="Verdana"> Planos s&atilde;o um modo simples de acrescentar 
+  superf&iacute;cies grandes, planas ao mundo. Planos s&atilde;o &uacute;teis 
+  para coisas como ch&atilde;o, mar, c&eacute;u, nuvens e assim por diante. Quase 
+  todo jogo 3D usar&aacute; planos de um modo ou de outro.</font> </p>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Criando 
+  Planos&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Como voc&ecirc; cria um plano? - F&aacute;cil, 
+  &eacute; s&oacute; usar a instru&ccedil;&atilde;o CreatePlane:</font> </p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;cria um simples plano.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>plane=CreatePlane()</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<h2><font size="4" face="Verdana"><span style="background-color: #6097C9">&nbsp;Manipulando 
+  planos&nbsp;</span></font></h2>
+<p> <font size="2" face="Verdana"> Por padr&atilde;o, um plano &eacute; posicionado 
+  nas coordenadas 0,0,0 e virado para cima. Por&eacute;m, voc&ecirc; pode querer 
+  o plano virado para uma dire&ccedil;&atilde;o diferente, ou ser movido para 
+  cima ou para baixo. Para fazer isto, voc&ecirc; pode usar os comandos padr&otilde;es 
+  para manipular entidades. <br>
+  <br>
+  Por exemplo, voc&ecirc; poderia querer usar um plano para um efeito de camada 
+  de nuvens. Neste caso, apenas gire e posicione o plano como necess&aacute;rio:</font></p>
+<table border="1" width="100%" bordercolor="#FFFFFF">
+  <tr> 
+    <td width="14%">&nbsp;</td>
+    <td width="72%" bordercolor="#000000" bgcolor="#C0C0C0"><font size="2">&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial">;cria o plano de nuvens<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>clouds=CreatePlane()</b><br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;;gira o plano para deix&aacute;-lo virado para baixo<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>RotateEntity clouds,0,0,180</b><br>
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;;e o posiciona acima, no c&eacute;u<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<b>PositionEntity clouds,0,100,0</b></font><br>
+      <br>
+      </font></td>
+    <td width="14%">&nbsp;</td>
+  </tr>
+</table>
+<p> <font size="2" face="Verdana"> Agora n&oacute;s temos um plano que vai representar 
+  o c&eacute;u, como n&oacute;s podemos fazer isto parecer real&iacute;stico? 
+  <br>
+  <br>
+  A resposta f&aacute;cil seria: aplique uma textura! Como voc&ecirc; ver&aacute; 
+  mais tarde nestes tutoriais - Blitz3D tem TODAS as respostas. <br>
+  <br>
+  Se voc&ecirc; d&aacute; uma olhada cuidadosa na maioria dos jogos top de linha 
+  voc&ecirc; notar&aacute; que a maioria das cenas de c&eacute;u cont&ecirc;m 
+  mais de uma camada. Normalmente isto consiste em 2 - &agrave;s vezes at&eacute; 
+  mesmo 3 planos. O plano mais do topo cont&eacute;m objetos est&aacute;ticos 
+  como o Sol, enquanto o plano seguinte tem uma camada de nuvem. Isto pode ser 
+  alcan&ccedil;ado usando a instru&ccedil;&atilde;o EntityAlpha (para fazer o 
+  plano ligeiramente transparente) -em conjun&ccedil;&atilde;o com uma textura 
+  animada que se move lentamente. (E SIM, o B3D pode fazer este efeito com facilidade!)</font></p>
+<p>
+  <center>
+    <font color="#666666" size="2" face="Verdana">Copyright 2001 (c) Paul Gerfen 
+    - GamecodingUK</font>
+  </center>
+</p>
+</body>
+</html>

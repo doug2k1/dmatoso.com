@@ -1,0 +1,97 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font: 1em Verdana, Arial, Helvetica, sans-serif;
+	background: #003366;
+}
+* {
+	margin:0px; 
+	padding:0px;
+} 
+#main {
+	background: #FFFFFF;
+	font-size: 0.8em;
+	padding: 20px;
+	margin: 20px;
+}
+#main p {
+	margin-bottom: 10px;
+}
+
+#main h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #0066CC;
+	padding: 2px;
+	border-bottom: 1px solid #FF9900;
+	margin-bottom: 20px;
+}
+#main h4 {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #000066;
+	margin-bottom: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+#main h3 {
+	font-size: 1.2em;
+	padding: 2px;
+	border-bottom: 1px solid #6699CC;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+#main h6 {
+	margin-bottom: 5px;
+	font-size: 0.75em;
+}
+
+
+
+.blue {
+	color: #0000FF;
+}
+.red {
+	color: #FF0000;
+}
+.green {
+	color: #008000;
+}
+.purple {
+	color: #800080;
+}
+.brown {
+	color: #A52A2A;
+}
+.orange {
+	color: #FFA500;
+}
+.yellow {
+	color: #FFFF00;
+}
+.null {
+
+}
+
+
+#form option {
+	padding-right: 10px;
+}
+#form div {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+#form label {
+	width: 200px;
+	float: left;
+}
+#form .submit {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+#code {
+	font: 1em "Courier New", Courier, monospace;
+}
