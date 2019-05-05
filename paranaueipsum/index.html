@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paranauê Ipsum</title>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="jquery-ui-1.10.4.custom.min.js"></script>
+  <script>
+    $(function() {
+      var photo = $('#photo');
+
+      function randInt(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+      }
+
+      $('#submit').on('click', function() {
+        var MIN_PHRASES = 3,
+            MAX_PHRASES = 10,
+            qty = parseInt($('#qty').val(), 10), 
+            phrases = 0, 
+            thisTotal = 0,
+            thisCount = 0,
+            txt = '',
+            data = null,
+            startArray = [],
+            endArray = [],
+            extraArray = [];
+
+        $.getJSON('data.json', function(json) {
+          data = json;
+
+          startArray = data.start.slice(0); 
+          startArray.sort(function() { return 0.5 - Math.random(); });
+
+          endArray = data.end.slice(0); 
+          endArray.sort(function() { return 0.5 - Math.random(); });
+
+          extraArray = data.extra.slice(0); 
+          extraArray.sort(function() { return 0.5 - Math.random(); });
+
+          while (phrases < qty) {
+            thisTotal = randInt(MIN_PHRASES, MAX_PHRASES);
+            thisCount = 0;
+
+            while (thisCount < thisTotal) {
+              txt += startArray.shift() + ' ' + endArray.shift() + '. ';
+
+              if (randInt(1,3) === 1) {
+                txt += extraArray.shift() + ' ';
+              }
+
+              if (startArray.length === 0) {
+                startArray = data.start.slice(0); 
+                startArray.sort(function() { return 0.5 - Math.random(); });
+              }
+
+              if (endArray.length === 0) {
+                endArray = data.end.slice(0); 
+                endArray.sort(function() { return 0.5 - Math.random(); });
+              }
+
+              if (extraArray.length === 0) {
+                extraArray = data.extra.slice(0); 
+                extraArray.sort(function() { return 0.5 - Math.random(); });
+              }
+
+              thisCount += 1;
+            }
+
+            txt += "<br><br>";
+            phrases += 1;
+          }
+          
+          $('#result').html(txt);
+        });
+      });
+
+      // tremedeira
+      function shake() {
+        var dir = ['left', 'right', 'up', 'down'].sort(function() { return 0.5 - Math.random(); }).shift();
+        photo.effect('shake', {
+          direction: dir,
+          distance: randInt(1,5),
+          times: randInt(2,4)
+        });
+
+        window.setTimeout(shake, randInt(2000, 5000));
+      }
+
+      window.setTimeout(shake, 3000);
+    });
+  </script>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <style>
+    *, *:before, *:after {
+      -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    }
+    #wrapper {
+      font: 16px 'Lato',sans-serif;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 20px 0;
+      width: 760px;
+    }
+    h1 {
+      color: #D21F08;
+      font-size: 82px;
+      font-weight: bold;
+      margin: 0;
+    }
+    h2 {
+      color: #aaa;
+      font-size: 30px;
+      margin: -10px 0 30px;
+    }
+    #result {
+      color: #222;
+      font-weight: 300;
+    }
+    #lblqty {
+      line-height: 30px;
+      height: 30px;
+      float: left;
+    }
+    #qty {
+      font: 18px 'Lato',sans-serif;
+      padding: 0 5px;
+      margin: 0 20px 0 10px;
+      width: 40px;
+      height: 30px;
+      float: left;
+    }
+    #submit {
+      background-color: #009C31;
+      color: #fff;
+      cursor: pointer;
+      font: 16px/30px 'Lato',sans-serif;
+      height: 30px;
+      padding: 0 10px;
+      border-width: 0;
+      border-radius: 5px;
+      float: left;
+    }
+    #photo {
+      float: left;
+      margin: -10px 20px 0 0;
+    }
+    #result {
+      float: left;
+      margin: 30px 0 0;
+      width: 440px;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Paranau&ecirc; Ipsum</h1>
+    <h2>Esse lorem ipsum tá meio x...</h2>
+
+    <img src="esse-manja-dos-paranaue.jpg" id="photo" alt="Bigode">
+
+    <label id="lblqty" for="qty">Par&aacute;grafos: </label>
+    <input type="text" id="qty" value="3">
+    <input type="submit" id="submit" value="Gerar paranauês">
+    <div id="result"></div>
+  </div>
+</body>
+</html>
