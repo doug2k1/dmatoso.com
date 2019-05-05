@@ -1,0 +1,85 @@
+html {
+	font-size: 12px;
+	font-family: 'Arial, Verdana';
+}
+
+.form_escolha p {
+	display: block;
+	overflow: hidden;
+}
+
+.ui-fullsize .ui-btn-inner, .ui-fullsize .ui-btn-inner {
+	font-size: 12px;
+}
+
+.escalasContent {
+	overflow: hidden;	
+	width: 100%;	
+}
+
+.escalasContent input.diasTrab, .escalasContent input.diasFolg {
+	width: 50px;
+	float: left;
+	height: 20px;
+	margin-right: 10px;
+}
+
+.escalasContent label {
+	width: 60px;
+	float: left;
+	display: inline-block;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+span.required {
+	color: #b02e2e;
+}
+
+div.message {	
+	color: #b02e2e;
+	border: 3px solid;
+	background: #fff;
+	padding: 10px;
+	display: none;
+}
+
+.selecionarData {
+	display: none;
+}
+
+#folgas {
+	width: 100%;
+	margin: 25px auto;	
+}
+
+.folgas-content {
+	height: 200px;
+    margin: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+		font-size: 1.3em;
+}
+
+.folgas-content a {
+	color: black;
+	text-decoration: none;
+}
+
+.folgas-content a:hover {	
+	text-decoration: underline;
+}
+
+ul.minhas-folgas li {
+	margin-bottom: 5px;
+}
+
+a.deleteButton {
+	display: inline-block;
+	margin-top: 15px;
+}
+
+li.fds {
+	color: #b02e2e;
+}
