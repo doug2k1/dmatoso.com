@@ -1,2 +1,8 @@
 /     https://www.webdevdrops.com
 /b3d  /b3d/startup_br.html
+
+# Redirect domain aliases to primary domain
+https://blog.dmatoso.com/* https://www.dmatoso.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://dmatosocom.netlify.com/* https://www.dmatoso.com/:splat 301!
