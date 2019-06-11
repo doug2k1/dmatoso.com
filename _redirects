@@ -8,7 +8,9 @@ https://blog.dmatoso.com/* https://www.dmatoso.com/:splat 301!
 # Optional: Redirect default Netlify subdomain to primary domain
 https://dmatosocom.netlify.com/* https://www.dmatoso.com/:splat 301!
 
+# Web Dev Drops
 /fullstack-node-react-graphql-express-b551b1a25ef3 https://www.webdevdrops.com/fullstack-node-react-graphql-express-b551b1a25ef3
 /about https://www.webdevdrops.com
 /@dmatoso https://www.webdevdrops.com
 /tagged/* https://www.webdevdrops.com
+/archive/* https://www.webdevdrops.com
