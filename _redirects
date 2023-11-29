@@ -12,3 +12,6 @@ https://dmatosocom.netlify.com/* https://www.dmatoso.com/:splat 301!
 /@dmatoso https://www.webdevdrops.com
 /tagged/* https://www.webdevdrops.com
 /archive/* https://www.webdevdrops.com
+
+# Manowar Lyrics Generator
+/manowar-lyrics-generator/* https://manowar-lyrics-generator.dmatoso.com
