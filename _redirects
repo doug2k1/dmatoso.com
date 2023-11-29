@@ -1,14 +1,21 @@
-/     https://www.webdevdrops.com 301!
-/b3d  /b3d/startup_br.html
+/ https://www.webdevdrops.com 301!
+/b3d /b3d/startup_br.html
 
 # Blog
+
 https://blog.dmatoso.com/* https://www.webdevdrops.com/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
+
 https://dmatosocom.netlify.com/* https://www.dmatoso.com/:splat 301!
 
 # Web Dev Drops
+
 /about https://www.webdevdrops.com
 /@dmatoso https://www.webdevdrops.com
-/tagged/* https://www.webdevdrops.com
-/archive/* https://www.webdevdrops.com
+/tagged/_ https://www.webdevdrops.com
+/archive/_ https://www.webdevdrops.com
+
+# Manowar Lyrics Generator
+
+/manowar-lyrics-generator/\* https://manowar-lyrics-generator.dmatoso.com
